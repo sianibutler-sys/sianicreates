@@ -239,3 +239,17 @@ textarea{resize:vertical}
 .q.is-bad > .chips button{border-color:rgba(255,155,138,.55)}
 .fielderr{color:#FF9B8A;font-size:14px;font-weight:500;margin-top:2px}
 div.cond:not(.reveal){display:flex;flex-direction:column;gap:18px;margin-top:8px}
+
+/* spec sheet tool drawers */
+.toolbox{display:flex;flex-direction:column}
+.toolbox details{border-bottom:1px dotted #DDD9CE}
+.toolbox details:last-child{border-bottom:0}
+.toolbox summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:6px 0;font-size:15px}
+.toolbox summary::-webkit-details-marker{display:none}
+.toolbox summary span{flex:1}
+.toolbox summary b{font:700 11px/1 var(--display);color:var(--blue-ink);background:#EEF1FF;border-radius:999px;padding:4px 7px}
+.toolbox summary::after{content:"+";font:700 16px/1 var(--display);color:var(--blue);width:14px;text-align:center;transition:transform .2s}
+.toolbox details[open] summary::after{content:"–"}
+.toolbox summary:hover span{color:var(--blue)}
+.toolbox ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:2px 0 10px}
+.toolbox li{font-size:13px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--paper)}
