@@ -40,8 +40,8 @@ const CHOICES = {
   logo: ['Logo', ['Yes, with files', 'Yes, low quality', 'No']],
   brand: ['Brand colors and fonts', ['Set', 'A loose idea', 'None yet']],
   tier: ['Tier', ['The Page', 'The Site', 'The System', 'Not sure yet']],
-  budget: ['Budget', ['Under $1,000', '$1,000–$2,000', '$2,000–$3,500', '$3,500+', "Not sure, I'd like guidance", 'Applying for On the House']],
-  updates: ['Updates after launch', ['Me, with training', "I'd like you to handle it", 'Not sure']],
+  budget: ['Budget', ['Under $800', '$800–$1,800', '$1,800–$3,500', '$3,500+', "Not sure, I'd like guidance", 'Applying for On the House']],
+  updates: ['Updates after launch', ['Me. Teach me how.', "I'd like you to handle it", 'Not sure']],
   change_rate: ['Content changes', ['Rarely', 'Monthly', 'Weekly']],
   launch_timing: ['Launch timing', ['By a specific date', 'As soon as possible', 'In the next 1–2 months', 'No rush']],
   date_firm: ['Date firm', ['Firm', 'Flexible']]
