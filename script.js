@@ -22,11 +22,11 @@
   const group = (name) => form.querySelector(`.chips[data-name="${name}"]`);
   const picked = (g) => [...g.querySelectorAll('button[aria-pressed="true"]')];
   const chipValue = (g) => {
-    const v = picked(g).map((b) => b.textContent.trim());
+    const v = picked(g).map((b) => b.dataset.value || b.textContent.trim());
     return g.dataset.type === 'multi' ? v : (v[0] || '');
   };
   const setChip = (g, label) => g.querySelectorAll('button').forEach((b) =>
-    b.setAttribute('aria-pressed', String(b.textContent.trim() === label)));
+    b.setAttribute('aria-pressed', String((b.dataset.value || b.textContent.trim()) === label)));
 
   form.querySelectorAll('.chips').forEach((g) => {
     const multi = g.dataset.type === 'multi';

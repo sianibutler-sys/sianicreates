@@ -186,13 +186,13 @@ a{color:inherit}
 .spec:hover{transform:rotate(0)}
 .spec__head{display:flex;justify-content:space-between;background:var(--ink);color:#fff;font:700 13px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;padding:14px 20px}
 .spec dl{padding:6px 20px}
-.spec dl div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:13px 0;border-bottom:1px dashed #CFCBC0}
-.spec dl div:last-child{border-bottom:0}
+.spec dl > div{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:13px 0;border-bottom:1px dashed #CFCBC0}
+.spec dl > div:last-child{border-bottom:0}
 .spec dt{font:700 12px/1.6 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--blue)}
 .spec dd{font-size:16px;line-height:1.45}
 .spec__foot{display:flex;align-items:center;justify-content:flex-end;gap:10px;border-top:2px solid var(--ink);padding:12px 20px;font-size:13px;color:var(--mute)}
 .spec__foot img{height:20px;width:auto;filter:brightness(0)}
-@media (max-width:860px){.about__in{grid-template-columns:1fr}.spec{transform:none}.spec dl div{grid-template-columns:92px 1fr}}
+@media (max-width:860px){.about__in{grid-template-columns:1fr}.spec{transform:none}.spec dl > div{grid-template-columns:92px 1fr}}
 
 /* intake */
 .start{background:var(--ink);color:#fff;padding:clamp(64px,8vw,112px) 0}
@@ -254,15 +254,15 @@ div.cond:not(.reveal){display:flex;flex-direction:column;gap:18px;margin-top:8px
 
 /* spec sheet tool drawers */
 .toolbox{display:flex;flex-direction:column}
-.toolbox details{border-bottom:1px dotted #DDD9CE}
-.toolbox details:last-child{border-bottom:0}
-.toolbox summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:6px 0;font-size:15px}
-.toolbox summary::-webkit-details-marker{display:none}
-.toolbox summary span{flex:1}
-.toolbox summary b{font:700 11px/1 var(--display);color:var(--blue-ink);background:#EEF1FF;border-radius:999px;padding:4px 7px}
-.toolbox summary::after{content:"+";font:700 16px/1 var(--display);color:var(--blue);width:14px;text-align:center;transition:transform .2s}
-.toolbox details[open] summary::after{content:"–"}
-.toolbox summary:hover span{color:var(--blue)}
+.toolbox__groups details{border-bottom:1px dotted #DDD9CE}
+.toolbox__groups details:last-child{border-bottom:0}
+.toolbox__groups summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:6px 0;font-size:15px}
+.toolbox__groups summary::-webkit-details-marker{display:none}
+.toolbox__groups summary span{flex:1}
+.toolbox__groups summary b{font:700 11px/1 var(--display);color:var(--blue-ink);background:#EEF1FF;border-radius:999px;padding:4px 7px}
+.toolbox__groups summary::after{content:"+";font:700 16px/1 var(--display);color:var(--blue);width:14px;text-align:center;transition:transform .2s}
+.toolbox__groups details[open] summary::after{content:"–"}
+.toolbox__groups summary:hover span{color:var(--blue)}
 .toolbox ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;padding:2px 0 10px}
 .toolbox li{font-size:13px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--paper)}
 
@@ -331,3 +331,22 @@ div.cond:not(.reveal){display:flex;flex-direction:column;gap:18px;margin-top:8px
 @media (max-width:900px){.cs-ask__in,.cs-phone__in{grid-template-columns:1fr}.built{grid-template-columns:1fr}.phone{max-width:300px;margin:0 auto}}
 @media (min-width:901px) and (max-width:1100px){.built{grid-template-columns:1fr 1fr}}
 .own h2 span{display:block}
+
+/* toolbox collapse */
+.toolbox__all > summary{list-style:none;cursor:pointer;display:flex;flex-direction:column;align-items:flex-start;gap:4px;font-size:16px;padding:0}
+.toolbox__all > summary::-webkit-details-marker{display:none}
+.toolbox__all > summary em{font-style:normal;font-weight:600;font-size:14px;color:var(--blue-ink);align-self:flex-start;border-bottom:2px solid var(--blue)}
+.toolbox__all > summary em::after{content:" +"}
+.toolbox__all[open] > summary em::after{content:" –"}
+.toolbox__all[open] > summary em{font-size:0;border:0}
+.toolbox__all[open] > summary em::before{content:"Hide the toolbox";font-size:14px;border-bottom:2px solid var(--blue)}
+.toolbox__groups{margin-top:10px;display:flex;flex-direction:column}
+
+/* tier choice cards in the form */
+.chips--cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.chips--cards button{border-radius:12px;padding:14px 16px;text-align:left;display:flex;flex-direction:column;gap:4px;line-height:1.35}
+.chips--cards strong{font:700 16px/1.2 var(--display)}
+.chips--cards small{font-size:13.5px;color:rgba(255,255,255,.7)}
+.chips--cards b{font-size:13px;font-weight:600;color:#8EA2FF;margin-top:2px}
+.chips--cards button[aria-pressed=true] small,.chips--cards button[aria-pressed=true] b{color:#fff}
+@media (max-width:560px){.chips--cards{grid-template-columns:1fr}}
