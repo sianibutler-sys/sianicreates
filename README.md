@@ -28,6 +28,8 @@ URL: Assets link
 
 Other/follow-up text fields: Current platform other, Domain name, Domain registrar, Current tools other, Needs other, Pages other
 
+Launch fields: Launch timing (required), and when it's "By a specific date": Launch date, Date firm, Launch reason (all required). The old Deadline field is no longer written.
+
 Tier (single select): The Page, The Site, The System, Not sure yet
 
 The form and the function enforce the same rules: required answers, follow-ups that only count when the answer that asked for them is present, chip answers limited to the listed options, and hidden follow-ups cleared before sending.

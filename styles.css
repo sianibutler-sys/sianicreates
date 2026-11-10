@@ -238,3 +238,4 @@ textarea{resize:vertical}
 .f.is-bad input,.f.is-bad textarea{border-color:#FF9B8A}
 .q.is-bad > .chips button{border-color:rgba(255,155,138,.55)}
 .fielderr{color:#FF9B8A;font-size:14px;font-weight:500;margin-top:2px}
+div.cond:not(.reveal){display:flex;flex-direction:column;gap:18px;margin-top:8px}

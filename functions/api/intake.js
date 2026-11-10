@@ -23,7 +23,7 @@ const TEXT = [
   ['needs_other', 'Needs other', 300], ['primary_action', 'Primary action', 500],
   ['booking_what', 'What gets booked', 500], ['product_count', 'Product count', 5], ['sell_now', 'Sells now on', 300],
   ['portfolio_count', 'Portfolio count', 4], ['pages_other', 'Pages other', 200], ['inspiration', 'Inspiration', 2000],
-  ['three_words', 'Three words', 200], ['avoid', 'Avoid', 1000], ['deadline', 'Deadline', 300],
+  ['three_words', 'Three words', 200], ['avoid', 'Avoid', 1000], ['launch_reason', 'Launch reason', 300],
   ['signoff', 'Sign-off', 300], ['notes', 'Notes', 4000]
 ];
 
@@ -42,7 +42,9 @@ const CHOICES = {
   tier: ['Tier', ['The Page', 'The Site', 'The System', 'Not sure yet']],
   budget: ['Budget', ['Under $1,000', '$1,000–$2,000', '$2,000–$3,500', '$3,500+', "Not sure, I'd like guidance", 'Applying for On the House']],
   updates: ['Updates after launch', ['Me, with training', "I'd like you to handle it", 'Not sure']],
-  change_rate: ['Content changes', ['Rarely', 'Monthly', 'Weekly']]
+  change_rate: ['Content changes', ['Rarely', 'Monthly', 'Weekly']],
+  launch_timing: ['Launch timing', ['By a specific date', 'As soon as possible', 'In the next 1–2 months', 'No rush']],
+  date_firm: ['Date firm', ['Firm', 'Flexible']]
 };
 const MULTI_CHOICES = {
   tools: ['Current tools', ['GlossGenius', 'Calendly', 'Square', 'Stripe', 'PayPal', 'Cash App or Zelle', 'Other', 'None yet']],
@@ -65,7 +67,7 @@ const LABELS = [
   ['pages', 'Pages'], ['pages_other', 'Other pages'], ['copy_ready', 'Website copy'], ['photos_ready', 'Photos'], ['logo', 'Logo'],
   ['brand', 'Brand colors and fonts'], ['assets_link', 'Folder link'], ['inspiration', 'Sites you like'],
   ['three_words', 'Three words for your brand'], ['avoid', "What you don't want"], ['updates', 'Who updates the site'],
-  ['change_rate', 'How often content changes'], ['launch_date', 'Ideal launch date'], ['deadline', 'Hard deadline'],
+  ['change_rate', 'How often content changes'], ['launch_timing', 'When you need it live'], ['launch_date', 'Launch date'], ['date_firm', 'Date is'], ['launch_reason', 'Date tied to'],
   ['budget', 'Budget'], ['signoff', 'Who else signs off'], ['notes', 'Anything else']
 ];
 
@@ -99,6 +101,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
   if (!booking) { clean.booking_what = ''; clean.deposits = ''; clean.text_reminders = ''; }
   if (!store) { clean.product_count = ''; clean.sell_now = ''; clean.made_to_order = ''; clean.fulfillment = []; }
   if (!has('needs', 'Show my work')) { clean.portfolio_count = ''; clean.portfolio_format = []; }
+  const dated = clean.launch_timing === 'By a specific date';
+  if (!dated) { clean.launch_date = ''; clean.date_firm = ''; clean.launch_reason = ''; }
+  const today = new Date().toISOString().slice(0, 10);
+  if (clean.launch_date && clean.launch_date < today) clean.launch_date = '';
   if (!/^\d+$/.test(clean.product_count)) clean.product_count = '';
   if (!/^\d+$/.test(clean.portfolio_count)) clean.portfolio_count = '';
 
@@ -128,6 +134,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
   need(!clean.photos_ready, 'photos');
   need(!clean.logo, 'logo');
   need(!clean.budget, 'budget');
+  need(!clean.launch_timing, 'when you need the site live');
+  need(dated && !clean.launch_date, 'launch date');
+  need(dated && !clean.date_firm, 'whether the date is firm');
+  need(dated && clean.launch_reason.length < 3, 'what the date is tied to');
   if (missing.length) return json({ error: `Missing: ${missing.join(', ')}` }, 400);
 
   if (!env.AIRTABLE_TOKEN || !env.AIRTABLE_BASE || !env.AIRTABLE_TABLE) {

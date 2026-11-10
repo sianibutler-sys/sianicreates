@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=ba974f79">
+<link rel="stylesheet" href="styles.css?v=4aacb9f9">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -390,9 +390,18 @@
         <div class="q"><p class="ql">Budget range <em>*</em></p><div class="chips" data-name="budget" data-type="radio" data-required><button type="button">Under $1,000</button><button type="button">$1,000–$2,000</button><button type="button">$2,000–$3,500</button><button type="button">$3,500+</button><button type="button">Not sure, I'd like guidance</button><button type="button">Applying for On the House</button></div></div>
         <div class="q"><p class="ql">After launch, who updates the site?</p><div class="chips" data-name="updates" data-type="radio"><button type="button">Me, with training</button><button type="button">I'd like you to handle it</button><button type="button">Not sure</button></div></div>
         <div class="q"><p class="ql">How often does your content change?</p><div class="chips" data-name="change_rate" data-type="radio"><button type="button">Rarely</button><button type="button">Monthly</button><button type="button">Weekly</button></div></div>
-        <div class="grid2">
-          <label class="f"><span>Ideal launch date</span><input name="launch_date" type="date"></label>
-          <label class="f"><span>Hard deadline? A launch, an event, a season</span><input name="deadline" maxlength="300"></label>
+        <div class="q">
+          <p class="ql">When do you need the site live? <em>*</em></p>
+          <div class="chips" data-name="launch_timing" data-type="radio" data-required>
+            <button type="button" data-reveals="c-launch">By a specific date</button><button type="button">As soon as possible</button><button type="button">In the next 1–2 months</button><button type="button">No rush</button>
+          </div>
+          <div class="cond" id="c-launch" hidden>
+            <div class="grid2">
+              <label class="f"><span>Launch date <em>*</em></span><input name="launch_date" type="date" required></label>
+              <div class="q"><p class="ql">Is that date firm? <em>*</em></p><div class="chips" data-name="date_firm" data-type="radio" data-required><button type="button">Firm</button><button type="button">Flexible</button></div></div>
+            </div>
+            <label class="f"><span>What's the date tied to? <em>*</em></span><input name="launch_reason" required minlength="3" maxlength="300" placeholder="Product launch, event, grand opening, season…"></label>
+          </div>
         </div>
         <label class="f"><span>Does anyone else need to sign off?</span><input name="signoff" maxlength="300"></label>
         <label class="f"><span>Anything else you want me to know?</span><textarea name="notes" rows="3" maxlength="4000"></textarea></label>
@@ -428,6 +437,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=ba974f79"></script>
+<script src="script.js?v=4aacb9f9"></script>
 </body>
 </html>
