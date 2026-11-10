@@ -179,44 +179,77 @@ function answers(c) {
   }).filter(Boolean);
 }
 
+const cap = (s) => s.charAt(0).toUpperCase() + s.slice(1);
+
+function niceDate(v) {
+  return v ? new Date(v + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' }) : '';
+}
+
 async function sendThanks(env, c) {
   const first = firstName(c.name);
   const onTheHouse = c.budget === 'Applying for On the House';
-  const paras = [
-    `Hi ${first},`,
-    'Thank you for sending this over. Your answers came through, and I will read every one.',
-    'Next up: your quote, or any questions I have, will land in this inbox within three business days. No calls needed unless you want one.',
-    ...(onTheHouse ? ['You applied for On the House. I will let you know either way when I reply.'] : []),
-    'A copy of what you sent is below, for your records. To add anything, just reply to this email.'
+  const steps = [
+    "Within three business days, I'll email you a fixed-price quote, or a few questions if anything needs clearing up.",
+    onTheHouse
+      ? 'You applied for On the House. I read every application myself and will let you know either way when I reply. Applying doesn\'t commit you to anything.'
+      : 'If the quote works for you, a 50% deposit holds your spot and I start building.',
+    "You'll review a working preview on your own phone before anything goes live."
   ];
+  const timing =
+    c.launch_timing === 'By a specific date' && c.launch_date
+      ? `Your launch date is ${niceDate(c.launch_date)} (${cap(c.launch_reason.replace(/[.\s]+$/, ''))}). I'll confirm in my reply whether that timeline works.`
+      : c.launch_timing === 'As soon as possible'
+        ? "You'd like to launch as soon as possible. My reply will include the earliest start date I can give you."
+        : '';
+  const before = [`Hi ${first},`, 'Thank you for sending this over. Your answers are in, and the next move is mine.', "Here's what happens next:"];
+  const after = [
+    ...(timing ? [timing] : []),
+    'No calls needed. If you\'d like one, reply and say so.',
+    'Need to add something or change an answer? Reply to this email. It comes straight to me.',
+    'A copy of what you sent is below, for your records.'
+  ];
+  const p = (t) => `<p style="margin:0 0 16px">${esc(t)}</p>`;
   await send(env, {
     to: c.email,
     reply_to: 'hello@sianicreates.com',
-    subject: 'Got it. Your project is in.',
-    text: paras.join('\n\n') + '\n\nSiani\nSiani Creates · sianicreates.com\n\n---\nYOUR ANSWERS\n\n' +
+    subject: "Your project is in. Here's what happens next.",
+    text: [...before, steps.map((s, n) => `${n + 1}. ${s}`).join('\n'), ...after].join('\n\n') +
+      '\n\nTalk soon,\nSiani\nSiani Creates · sianicreates.com\n\n---\nYOUR ANSWERS\n\n' +
       answers(c).map(([l, v]) => `${l}: ${v}`).join('\n'),
     html: layout(
-      paras.map((p) => `<p style="margin:0 0 16px">${esc(p)}</p>`).join('') +
-      '<p style="margin:24px 0 0">Siani</p>',
-      table(answers(c), 'Your answers')
+      before.map(p).join('') +
+      `<ol style="margin:0 0 18px;padding-left:22px">${steps.map((s) => `<li style="margin:0 0 8px">${esc(s)}</li>`).join('')}</ol>` +
+      after.map(p).join('') +
+      '<p style="margin:24px 0 0">Talk soon,<br>Siani</p>',
+      table(answers(c), 'Your answers'),
+      'Your quote arrives within three business days.'
     )
   });
 }
 
 async function sendAlert(env, c, recId) {
   const link = recId ? `https://airtable.com/${env.AIRTABLE_BASE}/${env.AIRTABLE_TABLE_ID || 'tblRJ8x6XxWm9SD9t'}/${recId}` : '';
-  const head = [c.name, c.business, c.budget].filter(Boolean).join(' · ');
+  const firm = c.launch_timing === 'By a specific date' && c.date_firm === 'Firm' && c.launch_date
+    ? `Firm date ${new Date(c.launch_date + 'T12:00:00Z').toLocaleDateString('en-US', { month: 'short', day: 'numeric', timeZone: 'UTC' })}` : '';
+  const head = [c.name, c.business, c.tier, c.budget, firm].filter(Boolean).join(' · ');
+  const timing = c.launch_timing === 'By a specific date'
+    ? `${niceDate(c.launch_date)} (${c.date_firm || 'firmness not given'}), for ${c.launch_reason}` : c.launch_timing;
+  const summary = [['Starting point', c.tier], ['Budget', c.budget], ['Launch', timing], ['Reach them by', c.contact_pref + (c.phone ? ` · ${c.phone}` : '')]].filter(([, v]) => v);
   await send(env, {
     to: env.NOTIFY_EMAIL || 'hello@sianicreates.com',
     reply_to: c.email,
     subject: `New project: ${head}`,
-    text: `${head}\n\n` + answers(c).map(([l, v]) => `${l}: ${v}`).join('\n') + (link ? `\n\nOpen in Airtable: ${link}` : ''),
+    text: `${head}\n\n` + summary.map(([l, v]) => `${l}: ${v}`).join('\n') + '\n\n' +
+      answers(c).map(([l, v]) => `${l}: ${v}`).join('\n') + (link ? `\n\nOpen in Airtable: ${link}` : ''),
     html: layout(
       `<p style="margin:0 0 6px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#2F55FF;font-weight:700">New project</p>` +
-      `<p style="margin:0 0 16px;font-size:22px;font-weight:700;color:#0E0E10">${esc(head)}</p>` +
+      `<p style="margin:0 0 18px;font-size:22px;font-weight:700;color:#0E0E10">${esc([c.name, c.business].filter(Boolean).join(' · '))}</p>` +
+      `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:0 0 18px">${summary.map(([l, v]) =>
+        `<tr><td style="padding:3px 16px 3px 0;font-size:13px;color:#6B6B73">${esc(l)}</td><td style="padding:3px 0;font-size:15px;font-weight:600;color:#0E0E10">${esc(v)}</td></tr>`).join('')}</table>` +
       `<p style="margin:0">Reply to this email to answer ${esc(firstName(c.name))} directly.</p>` +
       (link ? `<p style="margin:20px 0 0"><a href="${esc(link)}" style="display:inline-block;background:#0E0E10;color:#ffffff;text-decoration:none;padding:12px 20px;border-radius:999px;font-weight:600">Open in Airtable</a></p>` : ''),
-      table(answers(c), 'Their answers')
+      table(answers(c), 'Their answers'),
+      `${c.tier} · ${c.budget}`
     )
   });
 }
@@ -231,8 +264,9 @@ async function send(env, msg) {
   if (!r.ok) console.log('email failed', r.status, await r.text());
 }
 
-function layout(top, bottom) {
+function layout(top, bottom, preheader = '') {
   return `<!DOCTYPE html><html><body style="margin:0;background:#F6F5F1">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;color:transparent">${esc(preheader)}</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#F6F5F1"><tr><td align="center" style="padding:32px 16px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#ffffff;border:1px solid #E3E1DA;border-radius:14px;overflow:hidden">
 <tr><td style="background:#0E0E10;padding:22px 32px"><img src="${SITE}/assets/img/siani-creates.png" width="72" alt="Siani Creates" style="display:block;border:0;height:auto"></td></tr>
