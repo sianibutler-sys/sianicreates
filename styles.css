@@ -11,6 +11,7 @@
   --body:"Hanken Grotesk",system-ui,sans-serif;
   --r:14px;
 }
+[hidden]{display:none!important}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:84px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
@@ -227,3 +228,13 @@ textarea{resize:vertical}
 .foot__credit{font-size:14px;font-style:italic;color:rgba(255,255,255,.75)}
 .foot__small a{text-decoration:none;color:#fff}
 .foot__small a:hover{color:#8EA2FF}
+
+/* intake validation */
+.formnote{font-size:14px;color:rgba(255,255,255,.55);margin:-14px 0 26px}
+.f > span{display:block}
+.q .cond{margin-top:6px}
+.q .grid2{margin-top:2px}
+.q .grid2:has(> .cond:not([hidden])){margin-top:6px}
+.f.is-bad input,.f.is-bad textarea{border-color:#FF9B8A}
+.q.is-bad > .chips button{border-color:rgba(255,155,138,.55)}
+.fielderr{color:#FF9B8A;font-size:14px;font-weight:500;margin-top:2px}

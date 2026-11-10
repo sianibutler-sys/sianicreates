@@ -26,6 +26,12 @@ Base: Siani Creates (appOSPgtix7OtIXGo), table Intake (tblRJ8x6XxWm9SD9t). Statu
 
 URL: Assets link
 
+Other/follow-up text fields: Current platform other, Domain name, Domain registrar, Current tools other, Needs other, Pages other
+
+Tier (single select): The Page, The Site, The System, Not sure yet
+
+The form and the function enforce the same rules: required answers, follow-ups that only count when the answer that asked for them is present, chip answers limited to the listed options, and hidden follow-ups cleared before sending.
+
 Text fields: Name, Business, Email, Phone, Referral, About the business, Audience, Location, Links, Primary action, What gets booked, Product count, Sells now on, Portfolio count, Inspiration, Three words, Avoid, Deadline, Sign-off, Notes
 
 Single select: Status, Contact preference, Current platform, Domain, Deposits, Text reminders, Made to order, Copy, Photos, Logo, Brand colors and fonts, Updates after launch, Content changes, Budget

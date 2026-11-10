@@ -17,33 +17,52 @@ const SITE = 'https://sianicreates.com';
 const TEXT = [
   ['name', 'Name', 120], ['business', 'Business', 160], ['email', 'Email', 160], ['phone', 'Phone', 40],
   ['referral', 'Referral', 300], ['about', 'About the business', 2000], ['audience', 'Audience', 500],
-  ['location', 'Location', 300], ['links', 'Links', 1000], ['primary_action', 'Primary action', 500],
-  ['booking_what', 'What gets booked', 500], ['product_count', 'Product count', 40], ['sell_now', 'Sells now on', 300],
-  ['portfolio_count', 'Portfolio count', 40], ['inspiration', 'Inspiration', 2000], ['three_words', 'Three words', 200],
-  ['avoid', 'Avoid', 1000], ['deadline', 'Deadline', 300], ['signoff', 'Sign-off', 300], ['notes', 'Notes', 4000]
+  ['location', 'Location', 300], ['links', 'Links', 1000],
+  ['current_platform_other', 'Current platform other', 80], ['domain_name', 'Domain name', 120],
+  ['domain_registrar', 'Domain registrar', 80], ['tools_other', 'Current tools other', 200],
+  ['needs_other', 'Needs other', 300], ['primary_action', 'Primary action', 500],
+  ['booking_what', 'What gets booked', 500], ['product_count', 'Product count', 5], ['sell_now', 'Sells now on', 300],
+  ['portfolio_count', 'Portfolio count', 4], ['pages_other', 'Pages other', 200], ['inspiration', 'Inspiration', 2000],
+  ['three_words', 'Three words', 200], ['avoid', 'Avoid', 1000], ['deadline', 'Deadline', 300],
+  ['signoff', 'Sign-off', 300], ['notes', 'Notes', 4000]
 ];
-const SINGLE = [
-  ['contact_pref', 'Contact preference'], ['current_platform', 'Current platform'], ['domain', 'Domain'],
-  ['deposits', 'Deposits'], ['text_reminders', 'Text reminders'], ['made_to_order', 'Made to order'],
-  ['copy_ready', 'Copy'], ['photos_ready', 'Photos'], ['logo', 'Logo'], ['brand', 'Brand colors and fonts'],
-  ['updates', 'Updates after launch'], ['change_rate', 'Content changes'], ['budget', 'Budget'], ['tier', 'Tier']
-];
-const MULTI = [
-  ['tools', 'Current tools'], ['needs', 'Needs'], ['fulfillment', 'Fulfillment'],
-  ['portfolio_format', 'Portfolio format'], ['pages', 'Pages']
-];
+
+// Every chip question and the only answers it accepts. Anything else is dropped.
+const CHOICES = {
+  contact_pref: ['Contact preference', ['Text', 'Email', 'Call']],
+  current_platform: ['Current platform', ['No', 'Wix', 'Squarespace', 'Shopify', 'WordPress', 'GoDaddy', 'Other']],
+  domain: ['Domain', ["Yes, and I know where it's registered", 'Yes, not sure where', 'No']],
+  deposits: ['Deposits', ['Yes', 'No', 'Not yet']],
+  text_reminders: ['Text reminders', ['Yes', 'No', 'Not sure']],
+  made_to_order: ['Made to order', ['Yes', 'No', 'Some']],
+  copy_ready: ['Copy', ['Ready', 'Some of it', 'I need it written']],
+  photos_ready: ['Photos', ['Professional and ready', 'Phone photos', 'I need help']],
+  logo: ['Logo', ['Yes, with files', 'Yes, low quality', 'No']],
+  brand: ['Brand colors and fonts', ['Set', 'A loose idea', 'None yet']],
+  tier: ['Tier', ['The Page', 'The Site', 'The System', 'Not sure yet']],
+  budget: ['Budget', ['Under $1,000', '$1,000–$2,000', '$2,000–$3,500', '$3,500+', "Not sure, I'd like guidance", 'Applying for On the House']],
+  updates: ['Updates after launch', ['Me, with training', "I'd like you to handle it", 'Not sure']],
+  change_rate: ['Content changes', ['Rarely', 'Monthly', 'Weekly']]
+};
+const MULTI_CHOICES = {
+  tools: ['Current tools', ['GlossGenius', 'Calendly', 'Square', 'Stripe', 'PayPal', 'Cash App or Zelle', 'Other', 'None yet']],
+  needs: ['Needs', ['Show my work', 'Take bookings', 'Take inquiries or quote requests', 'Sell products', 'Sell services or packages with deposits', 'Show Instagram content', 'Collect testimonials', 'Build an email list', 'Promote events', 'Something else']],
+  fulfillment: ['Fulfillment', ['Shipping', 'Local pickup', 'Digital download']],
+  portfolio_format: ['Portfolio format', ['Photos', 'Video', 'Audio', 'Writing']],
+  pages: ['Pages', ['Home', 'About', 'Services', 'Portfolio', 'Book', 'Shop', 'Contact', 'FAQ', 'Testimonials', 'Blog', 'Other', 'Not sure yet']]
+};
 
 // Labels for the email copy, in form order.
 const LABELS = [
   ['tier', 'Starting point'], ['name', 'Name'], ['business', 'Business'], ['email', 'Email'], ['phone', 'Phone'],
   ['contact_pref', 'Best way to reach you'], ['referral', 'How you heard about Siani Creates'],
   ['about', 'What you do'], ['audience', 'Your clients or customers'], ['location', 'Where you work'], ['links', 'Links'],
-  ['current_platform', 'Current website'], ['domain', 'Domain'], ['tools', 'Tools you use now'],
-  ['needs', 'What the site needs to do'], ['primary_action', 'The one thing visitors should do'],
+  ['current_platform', 'Current website'], ['current_platform_other', 'Platform'], ['domain', 'Domain'], ['domain_name', 'Domain name'], ['domain_registrar', 'Registered with'], ['tools', 'Tools you use now'], ['tools_other', 'Other tools'],
+  ['needs', 'What the site needs to do'], ['needs_other', 'Something else'], ['primary_action', 'The one thing visitors should do'],
   ['booking_what', 'What gets booked'], ['deposits', 'Deposits'], ['text_reminders', 'Text reminders'],
   ['product_count', 'Number of products'], ['sell_now', 'Where you sell now'], ['made_to_order', 'Made to order'],
   ['fulfillment', 'How orders get to customers'], ['portfolio_count', 'Portfolio pieces'], ['portfolio_format', 'Portfolio format'],
-  ['pages', 'Pages'], ['copy_ready', 'Website copy'], ['photos_ready', 'Photos'], ['logo', 'Logo'],
+  ['pages', 'Pages'], ['pages_other', 'Other pages'], ['copy_ready', 'Website copy'], ['photos_ready', 'Photos'], ['logo', 'Logo'],
   ['brand', 'Brand colors and fonts'], ['assets_link', 'Folder link'], ['inspiration', 'Sites you like'],
   ['three_words', 'Three words for your brand'], ['avoid', "What you don't want"], ['updates', 'Who updates the site'],
   ['change_rate', 'How often content changes'], ['launch_date', 'Ideal launch date'], ['deadline', 'Hard deadline'],
@@ -55,26 +74,70 @@ export async function onRequestPost({ request, env, waitUntil }) {
   try { d = await request.json(); } catch { return json({ error: 'Invalid request' }, 400); }
   if (d.company_site) return json({ ok: true }); // honeypot
 
-  const email = str(d.email);
-  if (!str(d.name) || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return json({ error: 'Name and a valid email are required' }, 400);
-  }
-  if (!env.AIRTABLE_TOKEN || !env.AIRTABLE_BASE || !env.AIRTABLE_TABLE) {
-    return json({ error: 'Form not configured' }, 503);
-  }
 
   // Clean every answer once; emails and Airtable both read from this.
   const clean = {};
   for (const [k, , n] of TEXT) clean[k] = str(d[k]).slice(0, n);
-  for (const [k] of SINGLE) clean[k] = str(d[k]).slice(0, 80);
-  for (const [k] of MULTI) clean[k] = Array.isArray(d[k]) ? d[k].map((x) => str(x).slice(0, 80)).filter(Boolean).slice(0, 20) : [];
-  clean.assets_link = /^https?:\/\/\S+$/.test(str(d.assets_link)) ? str(d.assets_link).slice(0, 500) : '';
+  for (const [k, [, ok]] of Object.entries(CHOICES)) clean[k] = ok.includes(str(d[k])) ? str(d[k]) : '';
+  for (const [k, [, ok]] of Object.entries(MULTI_CHOICES)) {
+    clean[k] = Array.isArray(d[k]) ? [...new Set(d[k].map(str))].filter((x) => ok.includes(x)) : [];
+  }
+  clean.assets_link = /^https?:\/\/[^\s.]+\.\S+$/.test(str(d.assets_link)) ? str(d.assets_link).slice(0, 500) : '';
   clean.launch_date = /^\d{4}-\d{2}-\d{2}$/.test(str(d.launch_date)) ? d.launch_date : '';
+  if (!clean.tier) clean.tier = 'Not sure yet';
+
+  // Follow-ups only count when the answer that asked for them is present.
+  const has = (k, v) => clean[k].includes(v);
+  if (clean.current_platform !== 'Other') clean.current_platform_other = '';
+  if (!clean.domain.startsWith('Yes')) clean.domain_name = '';
+  if (clean.domain !== "Yes, and I know where it's registered") clean.domain_registrar = '';
+  if (!has('tools', 'Other')) clean.tools_other = '';
+  if (!has('needs', 'Something else')) clean.needs_other = '';
+  if (!has('pages', 'Other')) clean.pages_other = '';
+  const booking = has('needs', 'Take bookings') || has('needs', 'Sell services or packages with deposits');
+  const store = has('needs', 'Sell products');
+  if (!booking) { clean.booking_what = ''; clean.deposits = ''; clean.text_reminders = ''; }
+  if (!store) { clean.product_count = ''; clean.sell_now = ''; clean.made_to_order = ''; clean.fulfillment = []; }
+  if (!has('needs', 'Show my work')) { clean.portfolio_count = ''; clean.portfolio_format = []; }
+  if (!/^\d+$/.test(clean.product_count)) clean.product_count = '';
+  if (!/^\d+$/.test(clean.portfolio_count)) clean.portfolio_count = '';
+
+  // Same gates as the form, enforced here too.
+  const missing = [];
+  const need = (cond, label) => { if (cond) missing.push(label); };
+  need(clean.name.length < 2, 'name');
+  need(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(clean.email), 'email');
+  need(!clean.contact_pref, 'best way to reach you');
+  need(['Text', 'Call'].includes(clean.contact_pref) && clean.phone.replace(/\D/g, '').length < 10, 'phone');
+  need(clean.about.length < 15, 'what you do');
+  need(!clean.current_platform, 'current website');
+  need(clean.current_platform === 'Other' && !clean.current_platform_other, 'which platform');
+  need(!clean.domain, 'domain');
+  need(clean.domain.startsWith('Yes') && !clean.domain_name, 'domain name');
+  need(clean.domain === "Yes, and I know where it's registered" && !clean.domain_registrar, 'where the domain is registered');
+  need(has('tools', 'Other') && !clean.tools_other, 'other tools');
+  need(!clean.needs.length, 'what the site needs to do');
+  need(has('needs', 'Something else') && !clean.needs_other, 'what else the site should do');
+  need(clean.primary_action.length < 3, 'the one thing visitors should do');
+  need(booking && !clean.booking_what, 'what gets booked');
+  need(booking && !clean.deposits, 'deposits');
+  need(store && !clean.product_count, 'number of products');
+  need(store && !clean.fulfillment.length, 'how orders get to customers');
+  need(has('pages', 'Other') && !clean.pages_other, 'other pages');
+  need(!clean.copy_ready, 'website copy');
+  need(!clean.photos_ready, 'photos');
+  need(!clean.logo, 'logo');
+  need(!clean.budget, 'budget');
+  if (missing.length) return json({ error: `Missing: ${missing.join(', ')}` }, 400);
+
+  if (!env.AIRTABLE_TOKEN || !env.AIRTABLE_BASE || !env.AIRTABLE_TABLE) {
+    return json({ error: 'Form not configured' }, 503);
+  }
 
   const fields = { Status: 'New' };
   for (const [k, f] of TEXT) if (clean[k]) fields[f] = clean[k];
-  for (const [k, f] of SINGLE) if (clean[k]) fields[f] = clean[k];
-  for (const [k, f] of MULTI) if (clean[k].length) fields[f] = clean[k];
+  for (const [k, [f]] of Object.entries(CHOICES)) if (clean[k]) fields[f] = clean[k];
+  for (const [k, [f]] of Object.entries(MULTI_CHOICES)) if (clean[k].length) fields[f] = clean[k];
   if (clean.assets_link) fields['Assets link'] = clean.assets_link;
   if (clean.launch_date) fields['Launch date'] = clean.launch_date;
 
