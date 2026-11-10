@@ -79,9 +79,9 @@
     if (!need) clearFlag(phone.closest('.f'));
   }
 
-  // Pricing buttons preselect the tier on the last step.
-  document.querySelectorAll('[data-tier]').forEach((a) =>
-    a.addEventListener('click', () => setChip(group('tier'), a.dataset.tier)));
+  // Pricing and case study buttons pass ?tier= so the last step starts preselected.
+  const tierParam = new URLSearchParams(location.search).get('tier');
+  if (tierParam) setChip(group('tier'), tierParam);
 
   // ---------- validation ----------
   const visible = (el) => !el.closest('[hidden]');
