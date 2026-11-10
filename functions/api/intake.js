@@ -39,7 +39,7 @@ const CHOICES = {
   photos_ready: ['Photos', ['Professional and ready', 'Phone photos', 'I need help']],
   logo: ['Logo', ['Yes, with files', 'Yes, low quality', 'No']],
   brand: ['Brand colors and fonts', ['Set', 'A loose idea', 'None yet']],
-  tier: ['Tier', ['The Page', 'The Site', 'The System', 'Not sure yet']],
+  tier: ['Tier', ['The Hello', 'The Front Desk', 'The System', 'Not sure yet']],
   budget: ['Budget', ['Under $800', '$800–$1,800', '$1,800–$3,500', '$3,500+', "Not sure, I'd like guidance", 'Applying for On the House']],
   updates: ['Updates after launch', ['Me. Teach me how.', "I'd like you to handle it", 'Not sure']],
   change_rate: ['Content changes', ['Rarely', 'Monthly', 'Weekly']],
