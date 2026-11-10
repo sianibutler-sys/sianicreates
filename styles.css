@@ -111,25 +111,38 @@ a{color:inherit}
 
 /* pricing */
 .pricing{padding:clamp(64px,8vw,112px) 0;border-top:1px solid var(--line)}
+.price-head{text-align:center;max-width:640px;margin:0 auto 52px}
+.price-head h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5vw,60px);line-height:1;letter-spacing:-.03em;margin:16px 0 14px}
+.price-head__sub{font-size:18px;color:var(--ink-2)}
+.pill{display:inline-block;font:700 12px/1 var(--display);letter-spacing:.1em;text-transform:uppercase;color:var(--blue-ink);background:#EEF1FF;border:1px solid #D5DCFF;padding:9px 14px;border-radius:999px}
 .tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
-.tier{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px 28px 30px;display:flex;flex-direction:column;gap:10px}
-.tier h3{font-family:var(--display);font-weight:700;font-size:24px;letter-spacing:-.015em}
-.tier__price{font-family:var(--display);font-weight:800;font-size:52px;line-height:1;letter-spacing:-.03em;margin:6px 0 2px}
+.tier{position:relative;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px 28px 28px;display:flex;flex-direction:column}
+.tier__top{padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.tier h3{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.01em}
+.tier__price{font-family:var(--display);font-weight:800;font-size:54px;line-height:1;letter-spacing:-.035em;margin:14px 0 12px}
 .tier__price span{font:600 15px/1 var(--body);letter-spacing:0;color:var(--mute);vertical-align:middle;margin-right:2px}
-.tier__line{font-weight:600;color:var(--ink);margin-bottom:6px}
+.tier__best{font-size:15.5px;color:var(--ink-2);min-height:2.9em}
+.tier__plus{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:10px}
+.tier .feats{flex:1;margin:0 0 26px}
+.tier__cta{justify-content:center;width:100%}
 .tier--feat{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:10px 10px 0 var(--blue)}
-.tier--feat .tier__line{color:#fff}
-.tier--feat .tier__price span,.tier--feat .feats li{color:rgba(255,255,255,.75)}
+.tier--feat .tier__top{border-bottom-color:#2A2A30}
+.tier--feat .tier__best,.tier--feat .tier__price span,.tier--feat .feats li{color:rgba(255,255,255,.75)}
+.tier--feat .tier__plus{color:#fff}
 .tier__flag{position:absolute;top:-13px;right:22px;background:var(--blue);color:#fff;font:700 12px/1 var(--display);letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border-radius:999px;transform:rotate(3deg)}
-.addons{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
-.addons p{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 18px;font-size:15px;color:var(--ink-2)}
-.addons span{font-weight:600;color:var(--ink);margin-right:4px}
-.fine{margin-top:16px;font-size:14px;color:var(--mute)}
-.house{margin-top:48px;display:grid;grid-template-columns:1fr 2fr;gap:32px;align-items:center;border:2px dashed var(--blue);border-radius:var(--r);padding:32px 36px;background:#EEF1FF}
+.addons{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 28px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.addons__h{font:700 12px/1.3 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--blue);flex:0 0 auto}
+.addons__row{display:flex;flex:1;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.addons__row p{display:flex;flex-direction:column;gap:2px}
+.addons__row span{font-weight:600;color:var(--ink)}
+.addons__row b{font-weight:500;color:var(--ink-2);font-size:15px}
+.fine{margin-top:18px;text-align:center;font-size:15px;color:var(--mute)}
+.fine a{color:var(--ink);font-weight:600;text-decoration:none;border-bottom:2px solid var(--blue)}
+.house{margin-top:56px;display:grid;grid-template-columns:1fr 2fr;gap:32px;align-items:center;border:2px dashed var(--blue);border-radius:var(--r);padding:32px 36px;background:#EEF1FF}
 .house h3{font-family:var(--display);font-weight:800;font-size:clamp(30px,3.4vw,42px);letter-spacing:-.025em;line-height:1}
 .house__tag{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--blue-ink);margin-bottom:10px}
 .house p:not(.house__tag){color:var(--ink-2);font-size:17px}
-@media (max-width:900px){.tiers{grid-template-columns:1fr}.tier--feat{order:-1}.house{grid-template-columns:1fr;gap:12px;padding:26px}}
+@media (max-width:960px){.tiers{grid-template-columns:1fr;max-width:520px;margin:0 auto}.tier__best{min-height:0}.addons{flex-direction:column;align-items:flex-start;gap:14px}.addons__row{flex-direction:column;gap:12px}.house{grid-template-columns:1fr;gap:12px;padding:26px}}
 
 /* ownership band */
 .own{background:var(--blue);color:#fff;padding:clamp(64px,8vw,104px) 0}

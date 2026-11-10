@@ -17,6 +17,8 @@ Site for Siani Creates. Static HTML/CSS/JS on Cloudflare Pages, with one Pages F
    - `AIRTABLE_TOKEN` – personal access token, scope `data.records:write`, access to the Siani Creates base
    - `AIRTABLE_BASE` – base ID (`app…`)
    - `AIRTABLE_TABLE` – `Intake`
+   - `RESEND_API_KEY` – from Resend (sianicreates.com is verified). Sends the client a thank-you with a copy of their answers, and sends you a new-project alert.
+   - `NOTIFY_EMAIL` – optional, where alerts go. Defaults to hello@sianicreates.com
 
 ## Airtable table: Intake
 

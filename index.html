@@ -149,36 +149,49 @@
 
 <section class="pricing" id="pricing" aria-labelledby="price-h">
   <div class="wrap">
-    <div class="sec-head">
+    <div class="price-head">
+      <p class="pill">Founding rates · first 10 projects</p>
       <h2 id="price-h">Pricing<i class="dot">.</i></h2>
-      <p>Founding rates for my first 10 projects. Your final number comes from what you actually need, and I'm flexible. Need something in between? I'll build it around you.</p>
+      <p class="price-head__sub">Starting prices for every project. Your final quote follows what you actually need, and I'm flexible.</p>
     </div>
     <div class="tiers">
-      <div class="tier">
-        <h3>The Page</h3>
-        <p class="tier__price"><span>from</span> $600</p>
-        <p class="tier__line">One page that does the job.</p>
+      <article class="tier">
+        <header class="tier__top">
+          <h3>The Page</h3>
+          <p class="tier__price"><span>from</span> $600</p>
+          <p class="tier__best">For a portfolio, a menu or a link in bio.</p>
+        </header>
         <ul class="feats"><li>One-page site, built for phones first</li><li>Contact form with a thank-you email</li><li>Domain connected and set up in your name</li></ul>
-      </div>
-      <div class="tier tier--feat"><span class="tier__flag">Sweet spot</span>
-        <h3>The Site</h3>
-        <p class="tier__price"><span>from</span> $1,200</p>
-        <p class="tier__line">The full site, with the details people remember.</p>
-        <ul class="feats"><li>3–5 pages</li><li>Opening animation</li><li>Booking or inquiry form with confirmation emails</li><li>Instagram feed that updates itself</li><li>Set up to be found on Google</li></ul>
-      </div>
-      <div class="tier">
-        <h3>The System</h3>
-        <p class="tier__price"><span>from</span> $2,400</p>
-        <p class="tier__line">A site that runs part of your business.</p>
-        <ul class="feats"><li>Online booking with deposits</li><li>Shop with checkout and order emails</li><li>Text alerts and appointment reminders</li><li>Moving off Wix, Squarespace or Shopify without losing anything</li></ul>
-      </div>
+        <a class="btn tier__cta" href="#start" data-tier="The Page">Start with The Page</a>
+      </article>
+      <article class="tier tier--feat"><span class="tier__flag">Sweet spot</span>
+        <header class="tier__top">
+          <h3>The Site</h3>
+          <p class="tier__price"><span>from</span> $1,200</p>
+          <p class="tier__best">For a business ready to look the part.</p>
+        </header>
+        <p class="tier__plus">Everything in The Page, plus:</p><ul class="feats"><li>3–5 pages</li><li>Opening animation</li><li>Booking or inquiry form with confirmation emails</li><li>Instagram feed that updates itself</li><li>Set up to be found on Google</li></ul>
+        <a class="btn btn--light tier__cta" href="#start" data-tier="The Site">Start with The Site</a>
+      </article>
+      <article class="tier">
+        <header class="tier__top">
+          <h3>The System</h3>
+          <p class="tier__price"><span>from</span> $2,400</p>
+          <p class="tier__best">For a business that books, sells or ships online.</p>
+        </header>
+        <p class="tier__plus">Everything in The Site, plus:</p><ul class="feats"><li>Online booking with deposits</li><li>Shop with checkout and order emails</li><li>Text alerts and appointment reminders</li><li>A move off Wix, Squarespace or Shopify without losing anything</li></ul>
+        <a class="btn tier__cta" href="#start" data-tier="The System">Start with The System</a>
+      </article>
     </div>
     <div class="addons">
-      <p><span>Brand identity</span> from $400</p>
-      <p><span>Copy and photos</span> quoted with your project</p>
-      <p><span>Care plans</span> from $50/month</p>
+      <p class="addons__h">Add to any project</p>
+      <div class="addons__row">
+        <p><span>Brand identity</span><b>from $400</b></p>
+        <p><span>Copy and photos</span><b>quoted with your project</b></p>
+        <p><span>Care plan</span><b>from $50/month</b></p>
+      </div>
     </div>
-    <p class="fine">Half to start, half at launch.</p>
+    <p class="fine">Not sure which fits? <a href="#start" data-tier="Not sure yet">Start the intake</a> and I'll match you to the right one. Half to start, half at launch.</p>
 
     <div class="house">
       <div>
@@ -249,6 +262,7 @@
     <form class="intake" id="intake" novalidate>
       <div class="progress" aria-hidden="true"><span id="bar"></span></div>
       <p class="stepcount" id="stepcount" aria-live="polite">Step 1 of 6</p>
+      <input type="hidden" name="tier" id="tier">
       <input type="text" name="company_site" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
 
       <fieldset class="step is-on" data-step="1">

@@ -8,6 +8,12 @@
   const form = document.getElementById('intake');
   if (!form) return;
 
+  // Tier buttons in Pricing carry the choice into the form.
+  const tierInput = document.getElementById('tier');
+  document.querySelectorAll('[data-tier]').forEach((a) => {
+    a.addEventListener('click', () => { tierInput.value = a.dataset.tier; });
+  });
+
   const steps = [...form.querySelectorAll('.step')];
   const bar = document.getElementById('bar');
   const count = document.getElementById('stepcount');
