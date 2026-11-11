@@ -43,3 +43,9 @@ Multiple select: Current tools, Needs, Fulfillment, Portfolio format, Pages
 Date: Launch date
 
 The function sends `typecast: true`, so select options are created as answers come in.
+
+## Work section
+
+All projects live in `work/projects.json`. The home page shows the ones marked `"featured": true` (one per site type), and `/work/` shows all of them with filters by site type.
+
+To add or change a project: edit `work/projects.json`, add its desktop screenshot to `assets/img/` and a 360x360 phone thumbnail to `assets/img/work/`, then run `python3 scripts/build_work.py`. The script rewrites the cards in `index.html` and `work/index.html` and updates the counts. Each project also needs its own case study page at `work/<slug>/index.html`.

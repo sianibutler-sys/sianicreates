@@ -239,3 +239,20 @@
     box.focus();
   });
 })();
+
+/* work page: filter by site type */
+(function(){
+  var bar=document.querySelector('.filters'); if(!bar) return;
+  var btns=bar.querySelectorAll('button'), cards=document.querySelectorAll('.work--all .card'), status=document.querySelector('.filters__status');
+  var names={'all':'all site types','the-hello':'The Hello','the-front-desk':'The Front Desk','the-system':'The System'};
+  function apply(f,push){
+    if(!names[f]) f='all';
+    var shown=0;
+    btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.filter===f?'true':'false')});
+    cards.forEach(function(c){var on=f==='all'||c.dataset.type===f;c.hidden=!on;if(on)shown++});
+    if(status) status.textContent=push?('Showing '+shown+(shown===1?' site':' sites')+(f==='all'?'.':' for '+names[f]+'.')):'';
+    if(push){var u=new URL(location.href);if(f==='all')u.searchParams.delete('type');else u.searchParams.set('type',f);history.replaceState(null,'',u)}
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.filter,true)})});
+  apply(new URLSearchParams(location.search).get('type')||'all',false);
+})();

@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=38522f6c">
+<link rel="stylesheet" href="styles.css?v=985a5df9">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -65,16 +65,18 @@
   <div class="wrap">
     <div class="sec-head">
       <h2 id="work-h">Work<i class="dot">.</i></h2>
-      <p>Six sites. Each one books, sells or signs people up, so it earns its keep.</p>
+      <p>One of each kind of site I build. Each one books, sells or signs people up, so it earns its keep.</p>
     </div>
 
     <div class="cards">
-      <article class="card card--wide">
-        <a class="card__shot" href="work/gvo/">
+      <!-- work:featured:start -->
+      <article class="card card--wide" data-type="the-system">
+        <a class="card__shot" href="work/gvo/" tabindex="-1" aria-hidden="true">
           <span class="bar"><i></i><i></i><i></i><b>gvosound.com</b></span>
-          <img src="assets/img/work-gvo.jpg" alt="GVO Sound homepage: Your Vision. Your Sound." loading="lazy" width="800" height="500">
+          <picture><source media="(max-width:760px)" srcset="assets/img/work/gvo-thumb.jpg" width="360" height="360"><img src="assets/img/work-gvo.jpg" alt="GVO Sound homepage: Your Vision. Your Sound." loading="lazy" width="1200" height="750"></picture>
         </a>
         <div class="card__body">
+          <p class="card__type">The System</p>
           <p class="card__meta">Recording, photo and podcast studio · Annapolis, MD</p>
           <h3>GVO Sound</h3>
           <p class="card__lead">Books sessions and sells merch, even while the studio is mid-session.</p>
@@ -83,26 +85,28 @@
         </div>
       </article>
 
-      <article class="card">
-        <a class="card__shot" href="work/ajene/">
-          <span class="bar"><i></i><i></i><i></i><b>ajenelivingston.com</b></span>
-          <img src="assets/img/work-ajene.jpg" alt="Ajené Livingston homepage with portrait" loading="lazy" width="1200" height="750">
+      <article class="card" data-type="the-front-desk">
+        <a class="card__shot" href="work/butlers/" tabindex="-1" aria-hidden="true">
+          <span class="bar"><i></i><i></i><i></i><b>butlersmarinaannapolis.com</b></span>
+          <picture><source media="(max-width:760px)" srcset="assets/img/work/butlers-thumb.jpg" width="360" height="360"><img src="assets/img/work-butlers.jpg" alt="Butler&#x27;s Marina homepage: The best place to dock in Annapolis." loading="lazy" width="1200" height="750"></picture>
         </a>
         <div class="card__body">
-          <p class="card__meta">Community strategist · Chester County, PA</p>
-          <h3>Ajené Livingston</h3>
-          <p class="card__lead">Turns a full career into one clear story, with a look to match.</p>
-          <ul class="feats"><li>Logo, monogram and brand colors</li><li>Services and speaking pages</li><li>Testimonials clients submit themselves, posted after approval</li><li>Every message lands in his inbox, and every sender gets a confirmation email with a copy</li><li>Every account set up in his name</li></ul>
-          <div class="card__links"><a class="link" href="work/ajene/">Read the case study</a><a class="link link--quiet" href="https://ajenelivingston.com" target="_blank" rel="noopener">Visit the site ↗</a></div>
+          <p class="card__type">The Front Desk</p>
+          <p class="card__meta">Family-run marina · Eastport, Annapolis</p>
+          <h3>Butler&#x27;s Marina</h3>
+          <p class="card__lead">Lets boaters price and request a slip without picking up the phone.</p>
+          <ul class="feats"><li>Instant price estimate for overnight dockage</li><li>Slip, apartment and office requests in one form, emailed to the office the moment they come in</li><li>Live tide, water temperature and wind</li><li>Old links from the previous site still land in the right place</li></ul>
+          <div class="card__links"><a class="link" href="work/butlers/">Read the case study</a><span class="soon">Launching soon</span></div>
         </div>
       </article>
 
-      <article class="card">
-        <a class="card__shot" href="work/dock/">
+      <article class="card" data-type="the-hello">
+        <a class="card__shot" href="work/dock/" tabindex="-1" aria-hidden="true">
           <span class="bar"><i></i><i></i><i></i><b>thedock.life</b></span>
-          <img src="assets/img/work-dock.jpg" alt="Dock homepage: The water brings people together." loading="lazy" width="1200" height="750">
+          <picture><source media="(max-width:760px)" srcset="assets/img/work/dock-thumb.jpg" width="360" height="360"><img src="assets/img/work-dock.jpg" alt="Dock homepage: The water brings people together." loading="lazy" width="1200" height="750"></picture>
         </a>
         <div class="card__body">
+          <p class="card__type">The Hello</p>
           <p class="card__meta">Waterfront social club · Chesapeake Bay</p>
           <h3>Dock</h3>
           <p class="card__lead">Builds a guest list before the first event.</p>
@@ -110,47 +114,9 @@
           <div class="card__links"><a class="link" href="work/dock/">Read the case study</a><a class="link link--quiet" href="https://thedock.life" target="_blank" rel="noopener">Visit the site ↗</a></div>
         </div>
       </article>
-
-      <article class="card card--wide card--flip">
-        <a class="card__shot" href="work/butlers/">
-          <span class="bar"><i></i><i></i><i></i><b>butlersmarinaannapolis.com</b></span>
-          <img src="assets/img/work-butlers.jpg" alt="Butler's Marina homepage: The best place to dock in Annapolis." width="1200" height="750">
-        </a>
-        <div class="card__body">
-          <p class="card__meta">Family-run marina · Eastport, Annapolis</p>
-          <h3>Butler's Marina</h3>
-          <p class="card__lead">Lets boaters price and request a slip without picking up the phone.</p>
-          <ul class="feats"><li>Instant price estimate for overnight dockage</li><li>Slip, apartment and office requests in one form, emailed to the office the moment they come in</li><li>Live tide, water temperature and wind</li><li>Old links from the previous site still land in the right place</li></ul>
-          <div class="card__links"><a class="link" href="work/butlers/">Read the case study</a><span class="soon">Launching soon</span></div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="card__shot" href="work/invite/">
-          <span class="bar"><i></i><i></i><i></i><b>Private invitation</b></span>
-          <img src="assets/img/work-invite.jpg" alt="The opened Dock Supper Club invitation" loading="lazy" width="1200" height="750">
-        </a>
-        <div class="card__body">
-          <p class="card__meta">Private dinner invitations · Baltimore, MD</p>
-          <h3>Dock Supper Club invitation</h3>
-          <p class="card__lead">A personal invitation for every guest, opened like a real envelope.</p>
-          <ul class="feats"><li>A personal link for every guest, greeted by name</li><li>Tap the wax seal to open</li><li>RSVP with plus-ones, allergies and a photo release</li><li>Location revealed only after a yes</li></ul>
-          <div class="card__links"><a class="link" href="work/invite/">Read the case study</a></div>
-        </div>
-      </article>
-      <article class="card">
-        <a class="card__shot" href="work/boomin/">
-          <span class="bar"><i></i><i></i><i></i><b>Boomin Eats</b></span>
-          <img src="assets/img/work-boomin.jpg" alt="Boomin Eats homepage: Come Hungry. Leave Boomin." loading="lazy" width="1200" height="750">
-        </a>
-        <div class="card__body">
-          <p class="card__meta">Private chef and catering · Washington, DC</p>
-          <h3>Boomin Eats</h3>
-          <p class="card__lead">Makes you hungry, then books the chef.</p>
-          <ul class="feats"><li>Booking requests for private dining, catering, meal prep and pop-ups</li><li>Build-a-plate truck orders sent straight to her DMs</li><li>Kitchen clips from her reels</li><li>Opening animation built from her logo</li></ul>
-          <div class="card__links"><a class="link" href="work/boomin/">Read the case study</a><span class="soon">Launching soon</span></div>
-        </div>
-      </article>
+      <!-- work:featured:end -->
     </div>
+    <div class="work__more"><a class="btn btn--line work__all" href="work/">See all work (6)</a></div>
   </div>
 </section>
 
@@ -342,6 +308,6 @@
   </div>
 </footer>
 
-<script src="script.js?v=38522f6c"></script>
+<script src="script.js?v=985a5df9"></script>
 </body>
 </html>

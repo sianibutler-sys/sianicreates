@@ -1,0 +1,125 @@
+[
+  {
+    "slug": "gvo",
+    "name": "GVO Sound",
+    "type": "The System",
+    "meta": "Recording, photo and podcast studio · Annapolis, MD",
+    "lead": "Books sessions and sells merch, even while the studio is mid-session.",
+    "features": [
+      "Online session booking, with a text to the studio for each one",
+      "Merch shop with checkout and order confirmation emails",
+      "Song previews from studio artists",
+      "Instagram feed that updates itself, with approval first",
+      "Events page with a countdown to the next party",
+      "Google reviews right on the homepage",
+      "Moved off Wix with every product and record"
+    ],
+    "bar": "gvosound.com",
+    "image": "work-gvo.jpg",
+    "image_alt": "GVO Sound homepage: Your Vision. Your Sound.",
+    "thumb": "work/gvo-thumb.jpg",
+    "url": "https://gvosound.com",
+    "launching_soon": false,
+    "featured": true
+  },
+  {
+    "slug": "ajene",
+    "name": "Ajené Livingston",
+    "type": "The Hello",
+    "meta": "Community strategist · Chester County, PA",
+    "lead": "Turns a full career into one clear story, with a look to match.",
+    "features": [
+      "Logo, monogram and brand colors",
+      "Services and speaking pages",
+      "Testimonials clients submit themselves, posted after approval",
+      "Every message lands in his inbox, and every sender gets a confirmation email with a copy",
+      "Every account set up in his name"
+    ],
+    "bar": "ajenelivingston.com",
+    "image": "work-ajene.jpg",
+    "image_alt": "Ajené Livingston homepage with portrait",
+    "thumb": "work/ajene-thumb.jpg",
+    "url": "https://ajenelivingston.com",
+    "launching_soon": false,
+    "featured": false
+  },
+  {
+    "slug": "dock",
+    "name": "Dock",
+    "type": "The Hello",
+    "meta": "Waterfront social club · Chesapeake Bay",
+    "lead": "Builds a guest list before the first event.",
+    "features": [
+      "Opening animation that follows the real time of day",
+      "Guest list signup with a confirmation email, plus a welcome text for guests who opt in",
+      "Story series with a source behind every fact"
+    ],
+    "bar": "thedock.life",
+    "image": "work-dock.jpg",
+    "image_alt": "Dock homepage: The water brings people together.",
+    "thumb": "work/dock-thumb.jpg",
+    "url": "https://thedock.life",
+    "launching_soon": false,
+    "featured": true
+  },
+  {
+    "slug": "butlers",
+    "name": "Butler's Marina",
+    "type": "The Front Desk",
+    "meta": "Family-run marina · Eastport, Annapolis",
+    "lead": "Lets boaters price and request a slip without picking up the phone.",
+    "features": [
+      "Instant price estimate for overnight dockage",
+      "Slip, apartment and office requests in one form, emailed to the office the moment they come in",
+      "Live tide, water temperature and wind",
+      "Old links from the previous site still land in the right place"
+    ],
+    "bar": "butlersmarinaannapolis.com",
+    "image": "work-butlers.jpg",
+    "image_alt": "Butler's Marina homepage: The best place to dock in Annapolis.",
+    "thumb": "work/butlers-thumb.jpg",
+    "url": null,
+    "launching_soon": true,
+    "featured": true
+  },
+  {
+    "slug": "invite",
+    "name": "Dock Supper Club invitation",
+    "type": "The Front Desk",
+    "meta": "Private dinner invitations · Baltimore, MD",
+    "lead": "A personal invitation for every guest, opened like a real envelope.",
+    "features": [
+      "A personal link for every guest, greeted by name",
+      "Tap the wax seal to open",
+      "RSVP with plus-ones, allergies and a photo release",
+      "Location revealed only after a yes"
+    ],
+    "bar": "Private invitation",
+    "image": "work-invite.jpg",
+    "image_alt": "The opened Dock Supper Club invitation",
+    "thumb": "work/invite-thumb.jpg",
+    "url": null,
+    "launching_soon": false,
+    "featured": false
+  },
+  {
+    "slug": "boomin",
+    "name": "Boomin Eats",
+    "type": "The Front Desk",
+    "meta": "Private chef and catering · Washington, DC",
+    "lead": "Makes you hungry, then books the chef.",
+    "features": [
+      "Booking requests for private dining, catering, meal prep and pop-ups",
+      "Build-a-plate truck orders sent straight to her DMs",
+      "Kitchen clips from her reels",
+      "Opening animation built from her logo"
+    ],
+    "bar": "Boomin Eats",
+    "image": "work-boomin.jpg",
+    "image_alt": "Boomin Eats homepage: Come Hungry. Leave Boomin.",
+    "thumb": "work/boomin-thumb.jpg",
+    "url": null,
+    "launching_soon": true,
+    "featured": false
+  }
+]
