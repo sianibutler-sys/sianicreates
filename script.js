@@ -5,6 +5,29 @@
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 
+  // Swipeable rows on phones: dots follow the card in view and jump on tap.
+  document.querySelectorAll('.swipe-dots').forEach((dots) => {
+    const row = document.querySelector('.' + dots.dataset.for);
+    if (!row) return;
+    const cards = [...row.children];
+    const btns = cards.map((card, n) => {
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.tabIndex = -1;
+      b.addEventListener('click', () => row.scrollTo({ left: card.offsetLeft - row.offsetLeft - 24, behavior: 'smooth' }));
+      dots.appendChild(b);
+      return b;
+    });
+    const sync = () => {
+      const mid = row.scrollLeft + row.clientWidth / 2;
+      let best = 0;
+      cards.forEach((c, n) => { if (Math.abs(c.offsetLeft - row.offsetLeft + c.offsetWidth / 2 - mid) < Math.abs(cards[best].offsetLeft - row.offsetLeft + cards[best].offsetWidth / 2 - mid)) best = n; });
+      btns.forEach((b, n) => b.setAttribute('aria-current', String(n === best)));
+    };
+    row.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
+    sync();
+  });
+
   const form = document.getElementById('intake');
   if (!form) return;
 

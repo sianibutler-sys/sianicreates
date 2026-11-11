@@ -366,3 +366,15 @@ div.cond:not(.reveal){display:flex;flex-direction:column;gap:18px;margin-top:8px
 .moves__h{font:700 12px/1 var(--display);letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
 .feats--muted li::before{background:var(--line)}
 @media (max-width:900px){.price-info,.moves__cols{grid-template-columns:1fr}}
+
+/* services: swipeable row on phones */
+.swipe-dots{display:none}
+@media (max-width:760px){
+  .svc{display:flex;grid-template-columns:none;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;border:0;background:none;border-radius:0;margin:0 -24px;padding:0 24px 6px;scroll-padding-left:24px}
+  .svc::-webkit-scrollbar{display:none}
+  .svc__item{flex:0 0 82%;scroll-snap-align:start;border:1px solid var(--line)!important;border-radius:var(--r);background:var(--card)}
+  .svc__item--lead{background:var(--ink);border-color:var(--ink)!important}
+  .swipe-dots{display:flex;justify-content:center;gap:8px;margin-top:16px}
+  .swipe-dots button{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:var(--line);transition:width .25s,background .25s;cursor:pointer}
+  .swipe-dots button[aria-current="true"]{width:22px;background:var(--blue)}
+}
