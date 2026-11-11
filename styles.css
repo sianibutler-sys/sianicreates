@@ -378,3 +378,6 @@ div.cond:not(.reveal){display:flex;flex-direction:column;gap:18px;margin-top:8px
   .swipe-dots button{width:8px;height:8px;border-radius:999px;border:0;padding:0;background:var(--line);transition:width .25s,background .25s;cursor:pointer}
   .swipe-dots button[aria-current="true"]{width:22px;background:var(--blue)}
 }
+
+@media (max-width:760px){.svc:focus-visible{outline:3px solid var(--blue);outline-offset:4px}}
+@media (prefers-reduced-motion:reduce){.svc{scroll-behavior:auto}}
