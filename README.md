@@ -8,6 +8,8 @@ Site for Siani Creates. Static HTML/CSS/JS on Cloudflare Pages, with one Pages F
 - `styles.css`, `script.js`
 - `assets/img/` – logo and portfolio screenshots
 - `functions/api/intake.js` – Start a project form, writes to Airtable
+- `p/<client>-<code>/` – private proposal pages (noindex, not linked from the site)
+- `functions/api/accept.js` – Accept button on proposal pages; emails you and the client through Resend. Add each new proposal to `PROPOSALS` at the top of the file.
 
 ## Deploy on Cloudflare Pages
 

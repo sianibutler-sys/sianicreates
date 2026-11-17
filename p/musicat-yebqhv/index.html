@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Musicat TV proposal | Siani Creates</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0E0E10;--ink-2:#3A3A40;--mute:#6B6B73;--paper:#F6F5F1;--card:#fff;--line:#E3E1DA;
+  --plum:#5B2A86;--plum-ink:#45206A;--pink:#E0407F;--sun:#FF9F43;--lav:#F1EBFA;--peach:#FFF0E3;
+  --sunset:linear-gradient(100deg,#FF9F43 0%,#FF4F8B 45%,#7B3FE4 100%);
+  --display:"Bricolage Grotesque",system-ui,sans-serif;--body:"Hanken Grotesk",system-ui,sans-serif;--r:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{font-family:var(--body);font-size:17px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--plum);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1040px,100% - 40px);margin-inline:auto}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:8px 14px;border-radius:8px;z-index:99}
+.skip:focus{left:8px}
+
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:rgba(246,245,241,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top::before{content:"";display:block;height:4px;background:var(--sunset)}
+.top__in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:60px}
+.top__logo img{height:26px;width:auto;filter:brightness(0)}
+.top__nav{display:flex;gap:22px;font-size:15px}
+.top__nav a{text-decoration:none;color:var(--ink-2);font-weight:500}
+.top__nav a:hover{color:var(--plum)}
+@media (max-width:820px){.top__nav{display:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16px/1 var(--body);padding:15px 24px;border-radius:999px;border:2px solid var(--ink);background:var(--ink);color:#fff;text-decoration:none;cursor:pointer;transition:background .2s,border-color .2s,transform .2s}
+.btn:hover{background:var(--plum);border-color:var(--plum);transform:translateY(-1px)}
+.btn--sm{padding:10px 18px;font-size:15px}
+.btn--line{background:transparent;color:var(--ink)}
+.btn--line:hover{color:#fff}
+.btn[disabled]{opacity:.55;cursor:wait;transform:none}
+
+/* hero */
+.hero{padding:clamp(48px,9vw,104px) 0 clamp(40px,6vw,72px)}
+.eyebrow{font-weight:600;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--plum);margin-bottom:22px}
+.hero h1{font-family:var(--display);font-weight:800;font-size:clamp(44px,8.4vw,104px);line-height:.95;letter-spacing:-.035em}
+.hero h1 span{display:block}
+.hero h1 span:nth-child(2){color:var(--plum)}
+.hero h1 span:nth-child(3){background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero__lede{max-width:620px;font-size:19px;color:var(--ink-2);margin-top:32px}
+.hero__meta{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:28px;font-size:15px;color:var(--mute)}
+.hero__meta b{color:var(--ink);font-weight:600}
+.hero__ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+
+/* sections */
+.sec{padding:clamp(56px,8vw,96px) 0;border-top:1px solid var(--line)}
+.sec--tint{background:var(--lav)}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:start;margin-bottom:36px}
+.sym{grid-row:span 2;display:grid;place-items:center;width:56px;height:56px;border-radius:50%;background:var(--plum);color:#fff;font-size:30px;line-height:1;font-family:"Apple Symbols","Segoe UI Symbol","Noto Sans Symbols 2","Noto Music",serif}
+.sec-head h2{font-family:var(--display);font-weight:800;font-size:clamp(30px,4.6vw,52px);line-height:1;letter-spacing:-.03em;padding-top:4px}
+.sec-head p{color:var(--ink-2);max-width:640px;font-size:18px}
+@media (max-width:560px){.sec-head{grid-template-columns:1fr}.sym{grid-row:auto;width:46px;height:46px;font-size:24px}}
+.prose p{max-width:680px;color:var(--ink-2);font-size:18px}
+.prose p+p{margin-top:16px}
+
+/* audit cards */
+.channels{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+@media (max-width:760px){.channels{grid-template-columns:1fr}}
+.ch{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.ch h3{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.01em}
+.ch h3 a{text-decoration:none;border-bottom:2px solid var(--pink)}
+.ch .stat{color:var(--mute);font-size:15px;margin:4px 0 16px}
+.ch dl{display:grid;gap:12px}
+.ch dt{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--plum)}
+.ch dt.fix{color:#B4462A}
+.ch dd{font-size:16px;color:var(--ink-2)}
+.callouts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
+@media (max-width:760px){.callouts{grid-template-columns:1fr}}
+.callout{border-radius:var(--r);padding:24px;background:var(--plum);color:#fff}
+.callout--sun{background:var(--peach);color:var(--ink)}
+.callout h3{font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:8px}
+.callout p{font-size:16px;opacity:.92}
+.symrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.symrow span{display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.14);font-size:20px;font-family:"Apple Symbols","Segoe UI Symbol","Noto Sans Symbols 2","Noto Music",serif}
+
+/* gaps */
+.gaps{list-style:none;display:grid;gap:14px;counter-reset:g}
+.gaps li{counter-increment:g;display:grid;grid-template-columns:44px 1fr;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.gaps li::before{content:counter(g);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--lav);color:var(--plum);font:800 20px/1 var(--display)}
+.gaps h3{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:-.01em;margin-bottom:4px}
+.gaps p{color:var(--ink-2);font-size:16px}
+.note{margin-top:20px;font-size:16px;color:var(--mute);max-width:680px}
+
+/* roadmap */
+.filter{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:24px}
+.filter span{font-size:14px;color:var(--mute);margin-right:4px}
+.chip{font:600 14px/1 var(--body);padding:10px 16px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.road{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;align-items:stretch}
+@media (max-width:900px){.road{grid-template-columns:1fr}}
+.phase{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column}
+.phase--now{border:2px solid var(--plum);box-shadow:0 18px 40px -24px rgba(91,42,134,.55)}
+.phase__tag{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.phase--now .phase__tag{color:var(--plum)}
+.phase h3{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:-.02em;line-height:1.05;margin:6px 0 4px}
+.phase__when{color:var(--mute);font-size:15px;margin-bottom:16px}
+.phase ul{list-style:none;display:grid;gap:10px}
+.phase li{display:flex;flex-direction:column;gap:6px;padding:12px 0;border-top:1px solid var(--line);font-size:16px;transition:opacity .25s}
+.phase li.is-dim{opacity:.22}
+.who{display:flex;flex-wrap:wrap;gap:6px}
+.who i{font-style:normal;font-size:12px;font-weight:600;padding:4px 9px;border-radius:999px}
+.who .s{background:#E6ECFF;color:#1F3FD6}
+.who .y{background:var(--peach);color:#9A4B12}
+.who .p{background:var(--lav);color:var(--plum-ink)}
+.gate{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 10px;text-align:center}
+.road{grid-template-columns:1fr auto 1fr auto 1fr}
+.gate__mark{width:22px;height:22px;transform:rotate(45deg);border:2px solid var(--plum);background:var(--paper);margin:10px 0}
+.gate__line{flex:1;width:2px;background:var(--line)}
+.gate p{font-size:12px;font-weight:600;color:var(--plum);max-width:96px;line-height:1.35}
+.gate small{display:block;font-weight:500;color:var(--mute);margin-top:4px}
+@media (max-width:900px){
+  .road{grid-template-columns:1fr}
+  .gate{flex-direction:row;gap:12px;padding:14px 0;text-align:left;justify-content:flex-start}
+  .gate__line{display:none}
+  .gate p{max-width:none;font-size:14px}
+  .gate__mark{margin:0 4px}
+}
+
+/* investment */
+.prices{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:18px}
+@media (max-width:900px){.prices{grid-template-columns:1fr}}
+.price{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:26px}
+.price--main{background:var(--ink);color:#fff;border-color:var(--ink);position:relative;overflow:hidden}
+.price--main::after{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:var(--sunset)}
+.price__label{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.price--main .price__label{color:#C9B6EA}
+.price__amt{font-family:var(--display);font-weight:800;font-size:clamp(40px,5vw,56px);letter-spacing:-.03em;line-height:1;margin:12px 0 6px}
+.price__amt small{font-size:18px;font-weight:600;letter-spacing:0}
+.price__was{font-size:15px;color:rgba(255,255,255,.65)}
+.price__was s{opacity:.8}
+.price ul{list-style:none;display:grid;gap:8px;margin-top:18px;font-size:15px}
+.price li{padding-left:22px;position:relative;color:var(--ink-2)}
+.price--main li{color:rgba(255,255,255,.85)}
+.price li::before{content:"♪";position:absolute;left:0;color:var(--pink)}
+.terms{margin-top:28px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px}
+.terms h3{font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:12px}
+.terms ul{display:grid;gap:8px;padding-left:20px;color:var(--ink-2);font-size:16px}
+
+/* this week */
+.todo{list-style:none;display:grid;gap:10px;max-width:760px}
+.todo label{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px 18px;cursor:pointer;font-size:16px;color:var(--ink-2)}
+.todo input{appearance:none;flex:none;width:24px;height:24px;border:2px solid var(--plum);border-radius:7px;margin-top:1px;display:grid;place-items:center;cursor:pointer}
+.todo input:checked{background:var(--plum)}
+.todo input:checked::after{content:"";width:7px;height:12px;border:solid #fff;border-width:0 3px 3px 0;transform:translateY(-1px) rotate(45deg)}
+.todo input:checked+span{color:var(--mute);text-decoration:line-through}
+.todo__note{font-size:14px;color:var(--mute);margin-top:14px}
+
+/* accept */
+.accept{background:var(--ink);color:#fff;padding:clamp(56px,8vw,96px) 0;position:relative}
+.accept::before{content:"";position:absolute;left:0;right:0;top:0;height:6px;background:var(--sunset)}
+.accept__in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,72px);align-items:start}
+@media (max-width:860px){.accept__in{grid-template-columns:1fr}}
+.accept h2{font-family:var(--display);font-weight:800;font-size:clamp(36px,5.4vw,64px);line-height:.98;letter-spacing:-.03em}
+.accept h2 span{display:block}
+.accept h2 span:nth-child(3){background:var(--sunset);-webkit-background-clip:text;background-clip:text;color:transparent}
+.accept__copy p{color:rgba(255,255,255,.75);font-size:18px;margin-top:20px;max-width:440px}
+.form{background:#1A1A1E;border:1px solid #2C2C33;border-radius:var(--r);padding:26px;display:grid;gap:16px}
+.form label{display:grid;gap:6px;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)}
+.form input[type=text],.form input[type=email],.form textarea{font:16px/1.4 var(--body);color:#fff;background:#0E0E10;border:1.5px solid #34343C;border-radius:10px;padding:12px 14px;width:100%}
+.form input:focus,.form textarea:focus{border-color:#B48AF0;outline:none}
+.form textarea{min-height:90px;resize:vertical}
+.agree{display:flex!important;grid-template-columns:none;gap:12px!important;align-items:flex-start;font-weight:500!important;color:rgba(255,255,255,.8)!important;font-size:15px!important}
+.agree input{flex:none;width:22px;height:22px;accent-color:#B48AF0;margin-top:1px}
+.form .btn{background:#fff;color:var(--ink);border-color:#fff;width:100%}
+.form .btn:hover{background:#B48AF0;border-color:#B48AF0;color:var(--ink)}
+.form__msg{font-size:15px;min-height:1.4em}
+.form__msg.err{color:#FF9DB8}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.done{text-align:left}
+.done h3{font-family:var(--display);font-weight:800;font-size:32px;margin-bottom:10px}
+.done p{color:rgba(255,255,255,.78)}
+.foot{padding:28px 0;font-size:14px;color:var(--mute);border-top:1px solid var(--line)}
+.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+/* print */
+@media print{
+  @page{margin:16mm}
+  body{background:#fff;font-size:11pt}
+  .top,.hero__ctas,.filter,.accept .form,.foot,.skip{display:none!important}
+  html,body{font-size:9.5pt}
+  .wrap{width:100%}
+  .hero{padding:0 0 12pt}
+  .hero h1{font-size:34pt}
+  .hero__lede{font-size:10.5pt;margin-top:10pt}
+  .hero__meta{margin-top:8pt}
+  .sec-head{margin-bottom:10pt;grid-template-columns:auto 1fr}
+  .sec-head h2{font-size:18pt}
+  .sec-head p,.prose p,.note{font-size:9.5pt}
+  .sym{width:26pt;height:26pt;font-size:14pt;background:#fff;color:var(--plum);border:1.5pt solid var(--plum)}
+  .ch,.gaps li,.phase,.price,.terms,.callout{padding:9pt;border-radius:8pt}
+  .ch .stat{margin:2pt 0 6pt;font-size:8.5pt}
+  .ch dd,.gaps p,.callout p,.terms ul,.price ul,.todo label{font-size:9pt}
+  .channels,.callouts,.prices{gap:8pt}
+  .callouts{margin-top:8pt}
+  .gaps{gap:6pt;grid-template-columns:1fr 1fr}
+  .gaps li{grid-template-columns:22pt 1fr;gap:8pt}
+  .gaps li::before{width:22pt;height:22pt;font-size:11pt}
+  .gaps h3,.ch h3,.callout h3,.terms h3{font-size:11pt}
+  .phase h3{font-size:14pt}
+  .phase li{padding:5pt 0;font-size:9pt}
+  .phase ul{gap:0}
+  .price__amt{font-size:22pt}
+  .prices{grid-template-columns:1fr 1fr 1fr}
+  .terms{margin-top:8pt}
+  .todo{gap:4pt;max-width:none}
+  .todo label{padding:6pt 8pt}
+  .todo__note{display:none}
+  .accept h2{font-size:18pt}
+  .accept__copy p{font-size:9.5pt;margin-top:6pt}
+  .sec{padding:12pt 0;border-top:1px solid #ddd;break-inside:auto}
+  .sec--tint{background:#fff}
+  .sec-head{break-after:avoid}
+  .ch,.gaps li,.phase,.price,.terms,.callout{break-inside:avoid;box-shadow:none}
+  .phase li.is-dim{opacity:1}
+  .road{grid-template-columns:1fr auto 1fr auto 1fr}
+  .gate{padding:0 4pt;flex-direction:column;text-align:center;justify-content:center}
+  .gate__line{display:block}
+  .gate__mark{margin:4pt 0}
+  .gate p{font-size:7pt;max-width:56pt}
+  .channels,.callouts{grid-template-columns:1fr 1fr}
+  .road{break-inside:avoid}
+  .accept{background:#fff;color:var(--ink);padding:18pt 0}
+  .accept::before{display:none}
+  .accept__copy p{color:var(--ink-2)}
+  .accept__in{grid-template-columns:1fr}
+  .hero h1 span:nth-child(3),.accept h2 span:nth-child(3){color:var(--plum);background:none}
+  .price--main{background:#fff;color:var(--ink);border:2px solid var(--plum)}
+  .price--main .price__was,.price--main li{color:var(--ink-2)}
+  .callout{background:#fff;color:var(--ink);border:1px solid #ddd}
+  .symrow span{background:var(--lav);color:var(--plum)}
+  a{text-decoration:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top__in">
+    <a class="top__logo" href="#top" aria-label="Back to top"><img src="/assets/img/siani-creates.png" alt="Siani Creates" width="70" height="26"></a>
+    <nav class="top__nav" aria-label="Sections">
+      <a href="#today">Today</a>
+      <a href="#gaps">Gaps</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#investment">Investment</a>
+      <a href="#this-week">This week</a>
+    </nav>
+    <a class="btn btn--sm" href="#accept">Accept</a>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="wrap">
+    <p class="eyebrow">Proposal for Musicat TV · Prepared by Siani Creates</p>
+    <h1 id="hero-h"><span>One cast.</span><span>One story.</span><span>One system.</span></h1>
+    <p class="hero__lede">Thank you for trusting me with the full story. Musicat is further along than you think. The characters, the animation, the artist relationships and the hospital and school partnerships are real assets. What's missing is the structure that holds them together, and that's what this plan builds.</p>
+    <div class="hero__meta">
+      <span>Prepared <b>November 17, 2026</b></span>
+      <span>Good through <b>December 15, 2026</b></span>
+      <span>Phase 1 <b>$2,500</b></span>
+    </div>
+    <div class="hero__ctas">
+      <a class="btn" href="#roadmap">See the roadmap</a>
+      <button class="btn btn--line" type="button" data-print>Download PDF</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="today" aria-labelledby="today-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sym" aria-hidden="true">♪</span>
+      <h2 id="today-h">What exists today</h2>
+      <p>I reviewed everything public on November 13: Instagram, YouTube and both websites. The foundation is stronger than the online presence shows.</p>
+    </div>
+
+    <div class="channels">
+      <article class="ch">
+        <h3><a href="https://www.instagram.com/musicattv/" target="_blank" rel="noopener">Instagram</a></h3>
+        <p class="stat">31.3K followers · 178 posts · recent reels 184–1,054 views each</p>
+        <dl>
+          <div><dt>Working</dt><dd>Strong 3D animation, the Annie and Harmony Island teasers, artist clips with Vanilla Ice and Jax.</dd></div>
+          <div><dt class="fix">Needs attention</dt><dd>Reach per post is low for the follower count. The bio links Harmony Island and leaves out musicattv.com.</dd></div>
+        </dl>
+      </article>
+      <article class="ch">
+        <h3><a href="https://www.youtube.com/@TheMusicatShow/videos" target="_blank" rel="noopener">YouTube</a></h3>
+        <p class="stat">33.1K subscribers · 49 videos · last upload six months ago</p>
+        <dl>
+          <div><dt>Working</dt><dd>Drink Think at 83K views. Maxi Priest on mental health and the Healthy 5 Song at 35K each.</dd></div>
+          <div><dt class="fix">Needs attention</dt><dd>Most other videos sit under 600 views, and there's no regular upload rhythm.</dd></div>
+        </dl>
+      </article>
+      <article class="ch">
+        <h3><a href="https://www.musicattv.com" target="_blank" rel="noopener">musicattv.com</a></h3>
+        <p class="stat">The grown-ups' site: partnerships, events, contests, donations</p>
+        <dl>
+          <div><dt>Working</dt><dd>Real proof: 100K+ children reached, 15 children's hospitals, 7 countries, $100K+ raised since 2019. Case studies with UMB, Yale Bright Bodies and Seacrest Studios.</dd></div>
+          <div><dt class="fix">Needs attention</dt><dd>The proof is buried. Three menu items lead nowhere. The Instagram link points to an account that doesn't exist.</dd></div>
+        </dl>
+      </article>
+      <article class="ch">
+        <h3><a href="https://www.harmonyislandtv.com" target="_blank" rel="noopener">harmonyislandtv.com</a></h3>
+        <p class="stat">The kids' site, recently launched</p>
+        <dl>
+          <div><dt>Working</dt><dd>Missions, a passport, a wall of fame and a note for grown-ups. The Musiverse storyline is already written in.</dd></div>
+          <div><dt class="fix">Needs attention</dt><dd>An intro gate stands before any content, and the passport shows sample progress to a first-time visitor.</dd></div>
+        </dl>
+      </article>
+    </div>
+
+    <div class="callouts">
+      <div class="callout">
+        <h3>The transform is the brand</h3>
+        <p>The one thing consistent everywhere is the moment each cat turns into a symbol. That mechanic belongs at the center of everything Musicat makes.</p>
+        <div class="symrow" aria-label="Treble clef, natural, C clef, sixteenth note, sharp, eighth note, bass clef, flat">
+          <span aria-hidden="true">𝄞</span><span aria-hidden="true">♮</span><span aria-hidden="true">𝄡</span><span aria-hidden="true">♬</span><span aria-hidden="true">♯</span><span aria-hidden="true">♪</span><span aria-hidden="true">𝄢</span><span aria-hidden="true">♭</span>
+        </div>
+      </div>
+      <div class="callout callout--sun">
+        <h3>The cast page is the best material online</h3>
+        <p>Each cat carries a real struggle. Country Cat manages diabetes, Hip Hop Cat lives with anxiety, Jazzy Cat survived leukemia as a kitten. For kids in the hospitals you already serve, that's representation they rarely see.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="gaps" aria-labelledby="gaps-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sym" aria-hidden="true">♮</span>
+      <h2 id="gaps-h">What's holding it back</h2>
+      <p>Five gaps stand between Musicat and the partners it deserves. None of them is about the cats.</p>
+    </div>
+    <ol class="gaps">
+      <li><div><h3>Ownership on paper</h3><p>Brand partners and licensors ask who owns the characters before anything else. Ten years of work with family, friends and Navdeep needs written assignments to the LLC, covering the character designs, the animation and the original sketch.</p></div></li>
+      <li><div><h3>One version of each cat</h3><p>Each cat is described four different ways across your sites and our call, and two cats share the same virtue on the homepage. Kids, writers, animators and sponsors need one source.</p></div></li>
+      <li><div><h3>One sentence about what Musicat is</h3><p>Instagram, YouTube, both websites and the donation page each describe it differently. The donation page calls it a teen-led series with monthly episodes, which conflicts with a 6–11 audience and a six-month gap on YouTube.</p></div></li>
+      <li><div><h3>A way to get paid</h3><p>Ten years of events, contests and content have built proof and goodwill. There's still no package a school, hospital, venue or sponsor can buy at a set price with a clear next step.</p></div></li>
+      <li><div><h3>Music you own</h3><p>Every famous song or lyric needs a license, and estates can say no. Original music from Corey removes that risk and becomes the soundtrack Musicat owns.</p></div></li>
+    </ol>
+    <p class="note">A few quick fixes fit in here too: the broken Instagram link, the dead menu items, the passport placeholder and musicattv.com missing from the Instagram bio.</p>
+  </div>
+</section>
+
+<section class="sec" id="roadmap" aria-labelledby="road-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sym" aria-hidden="true">♯</span>
+      <h2 id="road-h">The roadmap</h2>
+      <p>Three phases, each ending with a check-in, so you see results before committing to the next. Tap a name to see who carries each piece.</p>
+    </div>
+
+    <div class="filter" role="group" aria-label="Show work by owner">
+      <span>Show</span>
+      <button class="chip" type="button" data-who="all" aria-pressed="true">Everything</button>
+      <button class="chip" type="button" data-who="s" aria-pressed="false">Siani</button>
+      <button class="chip" type="button" data-who="y" aria-pressed="false">You</button>
+      <button class="chip" type="button" data-who="p" aria-pressed="false">Partners</button>
+    </div>
+
+    <div class="road">
+      <article class="phase phase--now">
+        <p class="phase__tag">Phase 1 · Starts first</p>
+        <h3>Foundation</h3>
+        <p class="phase__when">4–6 weeks · $2,500</p>
+        <ul>
+          <li data-who="s">Character bible: one approved version of all eight cats<span class="who"><i class="s">Siani</i></span></li>
+          <li data-who="s">One-sentence positioning and a brand map<span class="who"><i class="s">Siani</i></span></li>
+          <li data-who="s y">Account and rights inventory<span class="who"><i class="s">Siani</i><i class="y">You</i></span></li>
+          <li data-who="p">Rights assignments and a standard contributor deal<span class="who"><i class="p">Your lawyer</i></span></li>
+          <li data-who="p">Entity and fiscal sponsor review<span class="who"><i class="p">Your accountant</i></span></li>
+          <li data-who="s">Quick site fixes and a one-page proof sheet<span class="who"><i class="s">Siani</i></span></li>
+        </ul>
+      </article>
+
+      <div class="gate" aria-label="Check-in 1">
+        <span class="gate__line" aria-hidden="true"></span>
+        <span class="gate__mark" aria-hidden="true"></span>
+        <p>Check-in 1<small>Rights status known, bible approved</small></p>
+        <span class="gate__line" aria-hidden="true"></span>
+      </div>
+
+      <article class="phase">
+        <p class="phase__tag">Phase 2</p>
+        <h3>Build</h3>
+        <p class="phase__when">3 months · monthly fee</p>
+        <ul>
+          <li data-who="s y">Paid programs package and booking system<span class="who"><i class="s">Siani builds</i><i class="y">You book</i></span></li>
+          <li data-who="s y">Sponsor kit and pipeline<span class="who"><i class="s">Siani builds</i><i class="y">We pitch together</i></span></li>
+          <li data-who="s">Grant lane through Counterpart<span class="who"><i class="s">Siani</i></span></li>
+          <li data-who="s y">Short-form content system and TikTok<span class="who"><i class="s">Siani sets up</i><i class="y">Your team posts</i></span></li>
+          <li data-who="s y">Skate Zone pilot event<span class="who"><i class="y">You host</i><i class="s">Siani budgets</i></span></li>
+          <li data-who="s">Website support<span class="who"><i class="s">Siani</i></span></li>
+        </ul>
+      </article>
+
+      <div class="gate" aria-label="Check-in 2">
+        <span class="gate__line" aria-hidden="true"></span>
+        <span class="gate__mark" aria-hidden="true"></span>
+        <p>Check-in 2<small>First paid booking or sponsor, real short-form numbers</small></p>
+        <span class="gate__line" aria-hidden="true"></span>
+      </div>
+
+      <article class="phase">
+        <p class="phase__tag">Phase 3</p>
+        <h3>Grow</h3>
+        <p class="phase__when">Planned at Check-in 2</p>
+        <ul>
+          <li data-who="s y">Brand and licensing outreach<span class="who"><i class="s">Siani</i><i class="y">You</i></span></li>
+          <li data-who="p">Original soundtrack<span class="who"><i class="p">Corey at GVO</i></span></li>
+          <li data-who="y">Merch relaunch on pre-orders<span class="who"><i class="y">You</i></span></li>
+          <li data-who="p">Animation crew<span class="who"><i class="p">Navdeep</i></span></li>
+          <li data-who="s">Long-term role, if it fits<span class="who"><i class="s">Siani</i></span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--tint" id="investment" aria-labelledby="inv-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sym" aria-hidden="true">♭</span>
+      <h2 id="inv-h">The investment</h2>
+      <p>Phase 1 is a fixed price. Phase 2 is quoted at the first check-in, once we know what the rights review turns up and which programs come first.</p>
+    </div>
+    <div class="prices">
+      <div class="price price--main">
+        <p class="price__label">Phase 1 · Foundation</p>
+        <p class="price__amt">$2,500</p>
+        <p class="price__was">Founding partner rate · standard rate <s>$5,000</s></p>
+        <ul>
+          <li>$1,250 at kickoff</li>
+          <li>$1,250 when Phase 1 is delivered</li>
+          <li>4–6 weeks from kickoff</li>
+        </ul>
+      </div>
+      <div class="price">
+        <p class="price__label">Phase 2 · Build</p>
+        <p class="price__amt">$1,500–$2,500<small> /mo</small></p>
+        <ul>
+          <li>Three months, flat monthly fee</li>
+          <li>Exact number set at Check-in 1</li>
+          <li>Website support included</li>
+        </ul>
+      </div>
+      <div class="price">
+        <p class="price__label">Website and Phase 3</p>
+        <p class="price__amt" style="font-size:clamp(28px,3.4vw,36px)">By quote</p>
+        <ul>
+          <li>A full site rebuild is optional, quoted separately and set up on accounts you own</li>
+          <li>Phase 3 is a retainer plus performance pay on commercial revenue</li>
+          <li>Donations stay outside any performance pay</li>
+        </ul>
+      </div>
+    </div>
+    <div class="terms">
+      <h3>The terms, in plain words</h3>
+      <ul>
+        <li>Phase 1 starts when the first payment is in.</li>
+        <li>You own everything I deliver once it's paid for.</li>
+        <li>Legal and accounting work is done by your own professionals. I prepare what they need. I'm not a lawyer or an accountant.</li>
+        <li>Costs outside my fee, such as ads, printing, events and software, are yours, and you approve each one first.</li>
+        <li>Either of us can stop at a check-in, with everything delivered so far in your hands.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="this-week" aria-labelledby="week-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sym" aria-hidden="true">♫</span>
+      <h2 id="week-h">What you can do this week</h2>
+      <p>None of these depend on signing anything with me. They protect Musicat either way.</p>
+    </div>
+    <ul class="todo">
+      <li><label><input type="checkbox" data-todo="song"><span>Take Lamar's song off Harmony Island until there's a signed agreement.</span></label></li>
+      <li><label><input type="checkbox" data-todo="heal"><span>Remove the "Heal the World" reference from the musicattv.com homepage.</span></label></li>
+      <li><label><input type="checkbox" data-todo="ads"><span>Let me know whether you ran paid ads on Drink Think or the Maxi Priest videos.</span></label></li>
+      <li><label><input type="checkbox" data-todo="bible"><span>Send the character bibles and contact sheets.</span></label></li>
+      <li><label><input type="checkbox" data-todo="accounts"><span>List every account (domains, hosting, Instagram, YouTube, Snapchat, any TikTok) and whose email each one is under. No passwords, just the list.</span></label></li>
+      <li><label><input type="checkbox" data-todo="agreements"><span>Find any signed agreements with Navdeep, the first animator, Counterpart and the plushie manufacturer.</span></label></li>
+    </ul>
+    <p class="todo__note">Your checkmarks save on this device, so you can come back to the list.</p>
+  </div>
+</section>
+
+<section class="accept" id="accept" aria-labelledby="accept-h">
+  <div class="wrap accept__in">
+    <div class="accept__copy">
+      <h2 id="accept-h"><span>One cast.</span><span>One story.</span><span>One system.</span></h2>
+      <p>When you're ready, accept Phase 1 here. I'll send the first invoice and a kickoff date within two business days.</p>
+      <p>Questions first? Text me, or add them in the note.</p>
+    </div>
+    <div>
+      <form class="form" id="accept-form" novalidate>
+        <input type="text" name="company_site" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Best email<input type="email" name="email" autocomplete="email" required></label>
+        <label>Anything to add (optional)<textarea name="note" maxlength="2000"></textarea></label>
+        <label class="agree"><input type="checkbox" name="agree" required><span>I accept Phase 1 at $2,500, paid in two parts, on the terms above.</span></label>
+        <button class="btn" type="submit">Accept Phase 1</button>
+        <p class="form__msg" id="form-msg" role="status" aria-live="polite"></p>
+      </form>
+      <div class="done" id="done" hidden>
+        <h3>You're in.</h3>
+        <p>I've got your acceptance, and a copy is on its way to your inbox. The first invoice and a kickoff date follow within two business days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Prepared for Musicat TV by Siani Creates</span>
+    <a href="mailto:hello@sianicreates.com">hello@sianicreates.com</a>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // Print to PDF
+  document.querySelectorAll('[data-print]').forEach(function (b) {
+    b.addEventListener('click', function () { window.print(); });
+  });
+
+  // Owner filter
+  var chips = document.querySelectorAll('.chip');
+  var items = document.querySelectorAll('.phase li[data-who]');
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      var w = c.getAttribute('data-who');
+      chips.forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      items.forEach(function (li) {
+        var on = w === 'all' || li.getAttribute('data-who').split(' ').indexOf(w) > -1;
+        li.classList.toggle('is-dim', !on);
+      });
+    });
+  });
+
+  // Checklist, saved on this device
+  var KEY = 'musicat-proposal-todo';
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  document.querySelectorAll('[data-todo]').forEach(function (box) {
+    var k = box.getAttribute('data-todo');
+    box.checked = !!saved[k];
+    box.addEventListener('change', function () {
+      saved[k] = box.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+    });
+  });
+
+  // Accept form
+  var form = document.getElementById('accept-form');
+  var msg = document.getElementById('form-msg');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var f = form.elements;
+    var name = f.name.value.trim(), email = f.email.value.trim();
+    msg.className = 'form__msg err';
+    if (name.length < 2) { msg.textContent = 'Please add your name.'; f.name.focus(); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg.textContent = 'Please check your email address.'; f.email.focus(); return; }
+    if (!f.agree.checked) { msg.textContent = 'Please tick the box to accept Phase 1.'; f.agree.focus(); return; }
+    var btn = form.querySelector('button[type=submit]');
+    btn.disabled = true; msg.className = 'form__msg'; msg.textContent = 'Sending…';
+    fetch('/api/accept', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ proposal: 'musicat-yebqhv', name: name, email: email, note: f.note.value.trim(), agree: true, company_site: f.company_site.value })
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.j && res.j.error);
+        form.hidden = true;
+        document.getElementById('done').hidden = false;
+      })
+      .catch(function () {
+        btn.disabled = false;
+        msg.className = 'form__msg err';
+        msg.textContent = "That didn't go through. Please try again, or email hello@sianicreates.com.";
+      });
+  });
+})();
+</script>
+</body>
+</html>
