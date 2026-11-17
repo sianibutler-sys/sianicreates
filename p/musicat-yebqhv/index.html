@@ -120,19 +120,26 @@ a{color:inherit}
 
 /* before / after */
 .ba{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.ba__switch{display:flex;gap:6px;padding:14px;border-bottom:1px solid var(--line);background:var(--paper)}
-.ba__switch button{flex:1;font:600 15px/1 var(--body);padding:12px;border-radius:999px;border:1.5px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer}
-.ba__switch button[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
-.ba__switch button[data-ba="after"][aria-pressed="true"]{background:var(--plum);border-color:var(--plum)}
+.ba__head,.ba__rows li{display:grid;grid-template-columns:150px 1fr 32px 1fr;gap:12px;align-items:baseline;padding:14px 20px}
+.ba__head{background:var(--paper);border-bottom:1px solid var(--line);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.ba__head .h-now{color:var(--mute)}
+.ba__head .h-then{color:var(--plum)}
 .ba__rows{list-style:none}
-.ba__rows li{display:grid;grid-template-columns:150px 1fr;gap:16px;padding:16px 20px;border-top:1px solid var(--line);align-items:baseline}
+.ba__rows li{border-top:1px solid var(--line)}
 .ba__rows li:first-child{border-top:0}
 .ba__rows b{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
-.ba__rows .now,.ba__rows .then{font-size:17px}
-.ba__rows .now{color:var(--ink-2)}
-.ba__rows .then{color:var(--plum-ink);font-weight:600}
-.ba[data-view="today"] .then,.ba[data-view="after"] .now{display:none}
-@media (max-width:560px){.ba__rows li{grid-template-columns:1fr;gap:2px}}
+.ba__rows .now{font-size:17px;color:var(--mute)}
+.ba__rows .arrow{color:var(--pink);font-weight:700;text-align:center}
+.ba__rows .then{font-size:17px;color:var(--plum-ink);font-weight:600}
+.ba__rows .lbl{display:none}
+@media (max-width:640px){
+  .ba__head{display:none}
+  .ba__rows li{grid-template-columns:1fr;gap:4px}
+  .ba__rows .arrow{display:none}
+  .ba__rows .lbl{display:inline;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}
+  .ba__rows .now .lbl{color:var(--mute)}
+  .ba__rows .then .lbl{color:var(--pink)}
+}
 
 /* timeline */
 .weeks{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
@@ -234,7 +241,7 @@ a{color:inherit}
   @page{margin:14mm}
   html,body{background:#fff;font-size:9.5pt}
   .wrap{width:100%}
-  .top,.hero__ctas,.accept .form,.foot,.skip,.ba__switch,.todo__note{display:none!important}
+  .top,.hero__ctas,.accept .form,.foot,.skip,.todo__note{display:none!important}
   .hero{padding:0 0 10pt}
   .hero h1{font-size:34pt}
   .hero__lede{font-size:10.5pt;margin-top:8pt}
@@ -259,8 +266,7 @@ a{color:inherit}
   .gaps li::before{width:22pt;height:22pt;font-size:11pt}
   .gaps h3,.ch h3,.callout h3,.terms h3,.dv h3,.learn h3{font-size:11pt}
   .wk h3,.phase h3{font-size:14pt}
-  .ba__rows li{grid-template-columns:110pt 1fr 1fr;padding:6pt 8pt}
-  .ba[data-view] .now,.ba[data-view] .then{display:block}
+  .ba__head,.ba__rows li{grid-template-columns:90pt 1fr 14pt 1fr;padding:6pt 8pt}
   .ba__rows .now,.ba__rows .then{font-size:9pt}
   .road{grid-template-columns:1fr auto 1fr auto 1fr;break-inside:avoid}
   .gate{padding:0 4pt;flex-direction:column;text-align:center;justify-content:center}
@@ -473,20 +479,17 @@ a{color:inherit}
     <p class="keep">Everything is set up on accounts you own, and nothing depends on me to keep working.</p>
 
     <h3 class="sub">What changes</h3>
-    <div class="ba" data-view="today">
-      <div class="ba__switch" role="group" aria-label="Compare today with after Phase 1">
-        <button type="button" data-ba="today" aria-pressed="true">Today</button>
-        <button type="button" data-ba="after" aria-pressed="false">After Phase 1</button>
-      </div>
-      <ul class="ba__rows" aria-live="polite">
-        <li><b>Starting line</b><span class="now">Guesses</span><span class="then">A day-one scorecard</span></li>
-        <li><b>The cats</b><span class="now">Four versions of each one</span><span class="then">One approved bible</span></li>
-        <li><b>The story</b><span class="now">Five different descriptions</span><span class="then">One sentence, everywhere</span></li>
-        <li><b>Ownership</b><span class="now">Assumed</span><span class="then">On paper, checked by your attorney</span></li>
-        <li><b>Your work</b><span class="now">Scattered across drives and inboxes</span><span class="then">One library, one link</span></li>
-        <li><b>Your proof</b><span class="now">Buried on a website menu</span><span class="then">A one-page sheet, ready to send</span></li>
-        <li><b>Revenue</b><span class="now">Nothing to buy, contacts in your phone</span><span class="then">One priced offer and a pipeline sheet</span></li>
-        <li><b>Next steps</b><span class="now">Every idea at once</span><span class="then">One 90-day plan with costs and targets</span></li>
+    <div class="ba">
+      <div class="ba__head" aria-hidden="true"><span></span><span class="h-now">Today</span><span></span><span class="h-then">After Phase 1</span></div>
+      <ul class="ba__rows">
+        <li><b>Starting line</b><span class="now"><span class="lbl">Today</span>Guesses</span><span class="arrow" aria-hidden="true">→</span><span class="then"><span class="lbl">After Phase 1</span>A day-one scorecard</span></li>
+        <li><b>The cats</b><span class="now"><span class="lbl">Today</span>Four versions of each one</span><span class="arrow" aria-hidden="true">→</span><span class="then"><span class="lbl">After Phase 1</span>One approved bible</span></li>
+        <li><b>The story</b><span class="now"><span class="lbl">Today</span>Five different descriptions</span><span class="arrow" aria-hidden="true">→</span><span class="then"><span class="lbl">After Phase 1</span>One sentence, everywhere</span></li>
+        <li><b>Ownership</b><span class="now"><span class="lbl">Today</span>Assumed</span><span class="arrow" aria-hidden="true">→</span><span class="then"><span class="lbl">After Phase 1</span>On paper, checked by your attorney</span></li>
+        <li><b>Your work</b><span class="now"><span class="lbl">Today</span>Scattered across drives and inboxes</span><span class="arrow" aria-hidden="true">→</span><span class="then"><span class="lbl">After Phase 1</span>One library, one link</span></li>
+        <li><b>Your proof</b><span class="now"><span class="lbl">Today</span>Buried on a website menu</span><span class="arrow" aria-hidden="true">→</span><span class="then"><span class="lbl">After Phase 1</span>A one-page sheet, ready to send</span></li>
+        <li><b>Revenue</b><span class="now"><span class="lbl">Today</span>Nothing to buy, contacts in your phone</span><span class="arrow" aria-hidden="true">→</span><span class="then"><span class="lbl">After Phase 1</span>One priced offer and a pipeline sheet</span></li>
+        <li><b>Next steps</b><span class="now"><span class="lbl">Today</span>Every idea at once</span><span class="arrow" aria-hidden="true">→</span><span class="then"><span class="lbl">After Phase 1</span>One 90-day plan with costs and targets</span></li>
       </ul>
     </div>
   </div>
@@ -710,16 +713,6 @@ a{color:inherit}
 (function () {
   document.querySelectorAll('[data-print]').forEach(function (b) {
     b.addEventListener('click', function () { window.print(); });
-  });
-
-  // Today / After Phase 1
-  var ba = document.querySelector('.ba');
-  document.querySelectorAll('[data-ba]').forEach(function (b) {
-    b.addEventListener('click', function () {
-      var v = b.getAttribute('data-ba');
-      ba.setAttribute('data-view', v);
-      document.querySelectorAll('[data-ba]').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
-    });
   });
 
   // Checklist, saved on this device
