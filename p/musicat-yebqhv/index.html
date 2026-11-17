@@ -221,6 +221,7 @@ a{color:inherit}
 .form .btn:hover{background:#B48AF0;border-color:#B48AF0;color:var(--ink)}
 .form__msg{font-size:15px;min-height:1.4em}
 .form__msg.err{color:#FF9DB8}
+.print-only{display:none}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
 .done h3{font-family:var(--display);font-weight:800;font-size:32px;margin-bottom:10px}
 .done p{color:rgba(255,255,255,.78)}
@@ -279,6 +280,10 @@ a{color:inherit}
   .callout{background:#fff;color:var(--ink);border:1px solid #ddd}
   .symrow span{background:var(--lav);color:var(--plum)}
   a{text-decoration:none}
+  .print-only{display:block}
+  .accept-link{margin-top:10pt;border:2pt solid var(--plum);border-radius:8pt;padding:10pt 12pt;break-inside:avoid}
+  .accept-link p{font-size:9.5pt;color:var(--ink-2);margin:0}
+  .accept-link a{display:inline-block;margin-top:6pt;font:700 12pt/1.2 var(--display);color:var(--plum);text-decoration:underline}
 }
 </style>
 </head>
@@ -657,8 +662,12 @@ a{color:inherit}
   <div class="wrap accept__in">
     <div class="accept__copy">
       <h2 id="accept-h"><span>One cast.</span><span>One story.</span><span>One system.</span></h2>
-      <p>When you're ready, accept Phase 1 here. The first invoice and a kickoff date follow within two business days.</p>
+      <p>When you're ready, accept Phase 1 online. The first invoice and a kickoff date follow within two business days.</p>
       <p>Questions first? Text me, or add them in the note.</p>
+      <div class="accept-link print-only">
+        <p>Accept Phase 1 online at</p>
+        <a href="https://sianicreates.com/p/musicat-yebqhv/#accept">sianicreates.com/p/musicat-yebqhv</a>
+      </div>
     </div>
     <div>
       <form class="form" id="accept-form" novalidate>
