@@ -33,12 +33,12 @@ export async function onRequestPost({ request, env, waitUntil }) {
     to: env.NOTIFY_EMAIL || 'hello@sianicreates.com',
     reply_to: email,
     subject: `Accepted: ${p.client} · ${p.phase}`,
-    text: rows.map(([l, v]) => `${l}: ${v}`).join('\n') + `\n\nProposal: ${link}\n\nNext: send the first invoice and a kickoff date within two business days.`,
+    text: rows.map(([l, v]) => `${l}: ${v}`).join('\n') + `\n\nProposal: ${link}\n\nNext: send the service agreement to sign, then the secure payment link for the first payment.`,
     html: layout(
       `<p style="margin:0 0 6px;font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:#5B2A86;font-weight:700">Proposal accepted</p>` +
       `<p style="margin:0 0 18px;font-size:22px;font-weight:700;color:#0E0E10">${esc(p.client)} · ${esc(p.phase)}</p>` +
       table(rows) +
-      `<p style="margin:20px 0 0">Next: send the first invoice and a kickoff date within two business days. Reply to this email to answer ${esc(firstName(name))} directly.</p>`
+      `<p style="margin:20px 0 0">Next: send the service agreement to sign, then the secure payment link for the first payment. Reply to this email to answer ${esc(firstName(name))} directly.</p>`
     )
   });
 
@@ -47,10 +47,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
     to: email,
     reply_to: 'hello@sianicreates.com',
     subject: `You accepted ${p.phase}`,
-    text: `Hi ${first},\n\nYour acceptance of ${p.phase} for ${p.client} is in. The first invoice and a kickoff date follow within two business days.\n\nPrice: ${p.price}\nProposal: ${link}\n\nQuestions? Reply to this email. It comes straight to me.\n\nTalk soon,\nSiani\nSiani Creates · sianicreates.com`,
+    text: `Hi ${first},\n\nYour acceptance of ${p.phase} for ${p.client} is in. Next, I'll send a service agreement for you to sign. Once it's signed, a secure link for the first payment follows, and we set the kickoff date.\n\nPrice: ${p.price}\nProposal: ${link}\n\nQuestions? Reply to this email. It comes straight to me.\n\nTalk soon,\nSiani\nSiani Creates · sianicreates.com`,
     html: layout(
       `<p style="margin:0 0 16px">Hi ${esc(first)},</p>` +
-      `<p style="margin:0 0 16px">Your acceptance of ${esc(p.phase)} for ${esc(p.client)} is in. The first invoice and a kickoff date follow within two business days.</p>` +
+      `<p style="margin:0 0 16px">Your acceptance of ${esc(p.phase)} for ${esc(p.client)} is in. Next, I'll send a service agreement for you to sign. Once it's signed, a secure link for the first payment follows, and we set the kickoff date.</p>` +
       table([['Accepted', p.phase], ['Price', p.price], ['When', `${when} ET`]]) +
       `<p style="margin:20px 0 16px"><a href="${esc(link)}" style="color:#5B2A86;font-weight:600">Open your proposal</a></p>` +
       `<p style="margin:0 0 16px">Questions? Reply to this email. It comes straight to me.</p>` +
