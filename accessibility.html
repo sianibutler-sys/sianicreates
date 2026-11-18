@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Accessibility | Siani Creates</title>
+<meta name="description" content="How sianicreates.com is built to work with screen readers, keyboards, magnification and voice control, and how to reach me if something gets in your way.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Siani Creates">
+<meta property="og:title" content="Accessibility | Siani Creates">
+<meta property="og:description" content="How sianicreates.com is built to work for everyone, and how to reach me if something gets in your way.">
+<meta property="og:url" content="https://sianicreates.com/accessibility.html">
+<meta property="og:image" content="https://sianicreates.com/assets/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Siani Creates S. mark">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sianicreates.com/assets/img/og.png">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=a11y1118">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav" id="top">
+  <div class="wrap nav__in">
+    <a class="nav__logo" href="./" aria-label="Siani Creates home"><img src="assets/img/siani-creates.png" alt="Siani Creates" width="96" height="36"></a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="work/">Work</a>
+      <a href="./#services">Services</a>
+      <a href="./#pricing">Pricing</a>
+      <a href="./#process">Process</a>
+      <a href="./#about">About</a>
+    </nav>
+    <a class="btn btn--sm" href="start/">Start a project</a>
+  </div>
+</header>
+
+<main id="main">
+<section class="a11y" aria-labelledby="a11y-h">
+  <div class="wrap">
+    <div class="a11y__hero">
+      <p class="a11y__kicker">Accessibility</p>
+      <h1 id="a11y-h">Built for every visitor<i class="dot">.</i></h1>
+      <p class="a11y__lede">This site should work whether you use a screen reader, a keyboard, magnification or voice control, so you can see my work, compare pricing and start a project the same way anyone else can.</p>
+    </div>
+
+    <div class="a11y__grid">
+      <div class="a11y__body">
+        <h2>The standard</h2>
+        <p>I build sianicreates.com to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at Level AA. Every page runs through automated testing on phone and desktop sizes. I also check it by hand with a keyboard and a screen reader before changes go live.</p>
+
+        <h2>What's built in</h2>
+        <ul class="a11y__list">
+          <li>A skip link at the top of every page jumps straight to the main content.</li>
+          <li>Everything works with a keyboard, and the element you're on always shows a clear outline.</li>
+          <li>The option buttons on the Start a project form tell screen readers which choices are selected.</li>
+          <li>When a form field needs attention, the form says which one and what's missing.</li>
+          <li>The form announces which step you're on as you move through it.</li>
+          <li>Text and buttons meet AA color contrast.</li>
+          <li>If your device is set to reduce motion, the opening animation and other movement stop.</li>
+          <li>Every image of my work has a written description.</li>
+        </ul>
+
+        <h2>Still being worked on</h2>
+        <ul class="a11y__list">
+          <li>The case studies show client sites as screenshots. Each one has a description, and a link opens the live site, but text inside a screenshot can't be read aloud or resized the way page text can.</li>
+          <li>Links to client sites, Google and other services take you to pages I don't control. I build my clients' sites to the same standard, but other services may not meet it.</li>
+          <li>Confirmation emails from the Start a project form haven't been tested with every email app and screen reader yet.</li>
+        </ul>
+
+        <p class="a11y__reviewed">Last reviewed November 2026</p>
+      </div>
+
+      <aside class="a11y__panel" aria-labelledby="help-h">
+        <h2 id="help-h">Something not working?</h2>
+        <p>Tell me what happened and which page you were on. I'll fix what I can and help you get what you came for another way, whether that's a quote, a price or a look at my work.</p>
+        <a class="btn btn--light" href="mailto:hello@sianicreates.com?subject=Accessibility%20on%20sianicreates.com">Email hello@sianicreates.com</a>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="foot__a11y"><p class="wrap">We want this site to work for everyone. <a href="accessibility.html" aria-current="page">Read the accessibility statement</a></p></div>
+  <div class="wrap foot__in">
+    <img src="assets/img/siani-creates.png" alt="Siani Creates" width="80" height="30">
+    <p class="foot__credit">Designed, built and overthought by Siani Creates. Obviously.</p>
+    <nav class="foot__links" aria-label="Footer"><a href="work/">Work</a><a href="./#pricing">Pricing</a><a href="start/">Start a project</a></nav>
+    <p class="foot__small"><a href="mailto:hello@sianicreates.com">hello@sianicreates.com</a></p>
+  </div>
+</footer>
+
+<script src="script.js?v=d6b72ee1"></script>
+</body>
+</html>

@@ -249,8 +249,10 @@ a{color:inherit}
 .done__sig{font-family:var(--display);font-style:italic;font-size:18px;color:#fff;padding-bottom:12px;margin-bottom:12px;border-bottom:1.5px solid #34343C}
 .done h3{font-family:var(--display);font-weight:800;font-size:32px;margin-bottom:10px}
 .done p{color:rgba(255,255,255,.78)}
-.foot{padding:28px 0;font-size:14px;color:var(--mute);border-top:1px solid var(--line)}
-.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.foot{font-size:14px;color:var(--mute);border-top:1px solid var(--line)}
+.foot__row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:28px}
+.foot__a11y{background:#ECEAE3;border-bottom:1px solid var(--line);text-align:center;padding:12px 0;font-size:14.5px;color:var(--ink-2)}
+.foot__a11y a{color:var(--plum-ink);font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
 
 /* print */
 @media print{
@@ -754,7 +756,8 @@ a{color:inherit}
 </main>
 
 <footer class="foot">
-  <div class="wrap">
+  <div class="foot__a11y"><p class="wrap">We want this site to work for everyone. <a href="/accessibility.html">Read the accessibility statement</a></p></div>
+  <div class="wrap foot__row">
     <span>Prepared for Jennifer and Musicat TV by Siani Creates · November 17, 2026</span>
     <a href="mailto:hello@sianicreates.com">hello@sianicreates.com</a>
   </div>
