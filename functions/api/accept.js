@@ -58,8 +58,12 @@ export async function onRequestPost({ request, env, waitUntil }) {
     )
   });
 
-  const mail = Promise.all([alert, confirm]);
-  if (waitUntil) waitUntil(mail); else await mail;
+  const results = await Promise.all([alert, confirm]);
+  const failed = results.filter((r) => !r.ok);
+  if (failed.length) {
+    console.log('accept email failed', JSON.stringify(failed));
+    return json({ error: 'Email failed', detail: failed.map((f) => `${f.status} ${f.body}`.slice(0, 300)) }, 502);
+  }
   return json({ ok: true });
 }
 
@@ -69,7 +73,8 @@ async function send(env, msg) {
     headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ from: FROM, to: [msg.to], reply_to: msg.reply_to, subject: msg.subject, text: msg.text, html: msg.html })
   });
-  if (!r.ok) console.log('email failed', r.status, await r.text());
+  const body = await r.text();
+  return { ok: r.ok, status: r.status, body };
 }
 
 function layout(body) {
