@@ -27,7 +27,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
 
   const when = new Date().toLocaleString('en-US', { timeZone: 'America/New_York', dateStyle: 'long', timeStyle: 'short' });
   const link = `${SITE}/p/${str(d.proposal)}/`;
-  const rows = [['Proposal', p.client], ['Accepted', p.phase], ['Price', p.price], ['Name', name], ['Email', email], ['When', `${when} ET`], ...(note ? [['Note', note]] : [])];
+  const rows = [['Proposal', p.client], ['Accepted', p.phase], ['Price', p.price], ['Signed by', name], ['Email', email], ['When', `${when} ET`], ...(note ? [['Note', note]] : [])];
 
   const alert = send(env, {
     to: env.NOTIFY_EMAIL || 'hello@sianicreates.com',
@@ -47,10 +47,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
     to: email,
     reply_to: 'hello@sianicreates.com',
     subject: `You accepted ${p.phase}`,
-    text: `Hi ${first},\n\nYour acceptance of ${p.phase} for ${p.client} is in. Next, I'll send a service agreement for you to sign. Once it's signed, a secure link for the first payment follows, and we set the kickoff date.\n\nPrice: ${p.price}\nProposal: ${link}\n\nQuestions? Reply to this email. It comes straight to me.\n\nTalk soon,\nSiani\nSiani Creates · sianicreates.com`,
+    text: `Hi ${first},\n\nYour acceptance of ${p.phase} for ${p.client} is in. It isn't binding. Next, I'll send a service agreement for you to sign. Once it's signed, a secure link for the first payment follows, and we set the kickoff date.\n\nPrice: ${p.price}\nProposal: ${link}\n\nQuestions? Reply to this email. It comes straight to me.\n\nTalk soon,\nSiani\nSiani Creates · sianicreates.com`,
     html: layout(
       `<p style="margin:0 0 16px">Hi ${esc(first)},</p>` +
-      `<p style="margin:0 0 16px">Your acceptance of ${esc(p.phase)} for ${esc(p.client)} is in. Next, I'll send a service agreement for you to sign. Once it's signed, a secure link for the first payment follows, and we set the kickoff date.</p>` +
+      `<p style="margin:0 0 16px">Your acceptance of ${esc(p.phase)} for ${esc(p.client)} is in. It isn't binding. Next, I'll send a service agreement for you to sign. Once it's signed, a secure link for the first payment follows, and we set the kickoff date.</p>` +
       table([['Accepted', p.phase], ['Price', p.price], ['When', `${when} ET`]]) +
       `<p style="margin:20px 0 16px"><a href="${esc(link)}" style="color:#5B2A86;font-weight:600">Open your proposal</a></p>` +
       `<p style="margin:0 0 16px">Questions? Reply to this email. It comes straight to me.</p>` +

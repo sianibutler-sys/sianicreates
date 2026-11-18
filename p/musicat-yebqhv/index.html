@@ -18,6 +18,7 @@
   --display:"Bricolage Grotesque",system-ui,sans-serif;--body:"Hanken Grotesk",system-ui,sans-serif;--r:16px;
   --symfont:"Apple Symbols","Segoe UI Symbol","Noto Sans Symbols 2","Noto Music",serif;
 }
+[hidden]{display:none!important}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
@@ -237,6 +238,11 @@ a{color:inherit}
 .next span{color:rgba(255,255,255,.7);font-size:16px}
 .print-only{display:none}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.form input.sig{font-family:"Bricolage Grotesque",var(--display);font-size:22px;font-style:italic;letter-spacing:-.01em;border-width:0 0 1.5px;border-color:rgba(255,255,255,.55);border-radius:0;background:transparent;padding:10px 2px}
+.nb{font-size:14px;color:rgba(255,255,255,.62);line-height:1.5;margin-top:-6px}
+.done{background:#1A1A1E;border:1px solid #2C2C33;border-radius:var(--r);padding:26px}
+.done:focus{outline:none}
+.done__sig{font-family:var(--display);font-style:italic;font-size:18px;color:#fff;padding-bottom:12px;margin-bottom:12px;border-bottom:1.5px solid #34343C}
 .done h3{font-family:var(--display);font-weight:800;font-size:32px;margin-bottom:10px}
 .done p{color:rgba(255,255,255,.78)}
 .foot{padding:28px 0;font-size:14px;color:var(--mute);border-top:1px solid var(--line)}
@@ -700,7 +706,7 @@ a{color:inherit}
       <h2 id="accept-h"><span>One cast.</span><span>One story.</span><span>One system.</span></h2>
       <p>When you're ready, accept Phase 1 online.</p>
       <ol class="next">
-        <li><b>Accept</b><span>Use the form on the proposal page.</span></li>
+        <li><b>Accept</b><span>Sign your name in the form. It isn't binding.</span></li>
         <li><b>Sign</b><span>I send a service agreement for you to sign.</span></li>
         <li><b>Pay</b><span>Once it's signed, a secure link for the first $1,400.</span></li>
         <li><b>Kick off</b><span>We set the date and week 1 begins.</span></li>
@@ -714,16 +720,18 @@ a{color:inherit}
     <div>
       <form class="form" id="accept-form" novalidate>
         <input type="text" name="company_site" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-        <label>Your name<input type="text" name="name" autocomplete="name" required></label>
+        <label>Sign with your full name<input class="sig" type="text" name="name" autocomplete="name" required></label>
         <label>Best email<input type="email" name="email" autocomplete="email" required></label>
         <label>Anything to add (optional)<textarea name="note" maxlength="2000"></textarea></label>
-        <label class="agree"><input type="checkbox" name="agree" required><span>I'm ready to move forward with Phase 1 at $4,000, paid in three parts. I understand a service agreement comes next.</span></label>
+        <label class="agree"><input type="checkbox" name="agree" required><span>I'd like to move forward with Phase 1 at $4,000, paid in three parts.</span></label>
+        <p class="nb">This isn't a contract. It tells me you're ready, and nothing is binding until we both sign the service agreement.</p>
         <button class="btn" type="submit">Accept Phase 1</button>
         <p class="form__msg" id="form-msg" role="status" aria-live="polite"></p>
       </form>
       <div class="done" id="done" hidden>
         <h3>You're in.</h3>
-        <p>I've got your acceptance, and a copy is on its way to your inbox. Next, I'll send a service agreement for you to sign. Once it's signed, a secure link for the first payment follows, and we set the kickoff date.</p>
+        <p class="done__sig">Signed by <span id="done-name"></span> on <span id="done-date"></span></p>
+        <p>A copy is on its way to your inbox. Next, I'll send the service agreement for you to sign. Nothing is binding until we both sign it. Once it's signed, a secure link for the first payment follows, and we set the kickoff date.</p>
       </div>
     </div>
   </div>
@@ -778,7 +786,13 @@ a{color:inherit}
       .then(function (res) {
         if (!res.ok) throw new Error(res.j && res.j.error);
         form.hidden = true;
-        document.getElementById('done').hidden = false;
+        document.getElementById('done-name').textContent = name;
+        document.getElementById('done-date').textContent = new Date().toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+        var done = document.getElementById('done');
+        done.hidden = false;
+        done.setAttribute('tabindex', '-1');
+        done.focus();
+        done.scrollIntoView({ block: 'center', behavior: 'smooth' });
       })
       .catch(function () {
         btn.disabled = false;
