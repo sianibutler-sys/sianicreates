@@ -7,7 +7,7 @@ const SITE = 'https://sianicreates.com';
 
 // Proposals that can be accepted, and what accepting means. Add a line for each new proposal page.
 const PROPOSALS = {
-  'musicat-yebqhv': { client: 'Musicat TV', phase: 'Phase 1: Foundation', price: '$3,000, paid as $1,500 at kickoff and $1,500 at handoff' }
+  'musicat-yebqhv': { client: 'Musicat TV', phase: 'Phase 1: Foundation', price: '$4,000, paid as $1,400 at signing, $1,300 when the week 3–4 drafts arrive and $1,300 at handoff' }
 };
 
 export async function onRequestPost({ request, env, waitUntil }) {
