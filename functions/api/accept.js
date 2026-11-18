@@ -64,7 +64,8 @@ export async function onRequestPost({ request, env, waitUntil }) {
     console.log('accept email failed', JSON.stringify(failed));
     return json({ error: 'Email failed', detail: failed.map((f) => `${f.status} ${f.body}`.slice(0, 300)) }, 502);
   }
-  return json({ ok: true });
+  const ids = results.map((r) => { try { return JSON.parse(r.body).id; } catch { return null; } });
+  return json({ ok: true, sent: ids });
 }
 
 async function send(env, msg) {
