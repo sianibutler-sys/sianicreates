@@ -13,7 +13,7 @@
 <style>
 :root{
   --ink:#0E0E10;--ink-2:#3A3A40;--mute:#6B6B73;--paper:#F6F5F1;--card:#fff;--line:#E3E1DA;
-  --plum:#5B2A86;--plum-ink:#45206A;--pink:#E0407F;--lav:#F1EBFA;--peach:#FFF0E3;
+  --plum:#5B2A86;--plum-ink:#45206A;--pink:#E0407F;--pink-ink:#B8235F;--lav:#F1EBFA;--peach:#FFF0E3;
   --sunset:linear-gradient(100deg,#FF9F43 0%,#FF4F8B 45%,#7B3FE4 100%);
   --display:"Bricolage Grotesque",system-ui,sans-serif;--body:"Hanken Grotesk",system-ui,sans-serif;--r:16px;
   --symfont:"Apple Symbols","Segoe UI Symbol","Noto Sans Symbols 2","Noto Music",serif;
@@ -82,6 +82,9 @@ a{color:inherit}
 .ch dt{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--plum)}
 .ch dt.fix{color:#B4462A}
 .ch dd{font-size:16px;color:var(--ink-2)}
+.ch--wide{grid-column:1/-1;margin-top:18px}
+.ch__two{grid-template-columns:1fr 1fr;gap:12px 28px}
+@media (max-width:760px){.ch__two{grid-template-columns:1fr}}
 .callouts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}
 @media (max-width:760px){.callouts{grid-template-columns:1fr}}
 .callout{border-radius:var(--r);padding:24px;background:var(--plum);color:#fff}
@@ -116,7 +119,7 @@ a{color:inherit}
 .dv p{font-size:16px;color:var(--ink-2)}
 .dv--wide{grid-column:1/-1;border:2px solid var(--plum)}
 .dv .why{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);font-size:15px;color:var(--ink)}
-.dv .why::before{content:"Why it matters ";font-weight:600;color:var(--pink)}
+.dv .why::before{content:"Why it matters ";font-weight:600;color:var(--pink-ink)}
 .keep{margin-top:18px;font-size:16px;color:var(--ink-2);max-width:700px}
 
 /* before / after */
@@ -130,7 +133,7 @@ a{color:inherit}
 .ba__rows li:first-child{border-top:0}
 .ba__rows b{font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
 .ba__rows .now{font-size:17px;color:var(--mute)}
-.ba__rows .arrow{color:var(--pink);font-weight:700;text-align:center}
+.ba__rows .arrow{color:var(--pink-ink);font-weight:700;text-align:center}
 .ba__rows .then{font-size:17px;color:var(--plum-ink);font-weight:600}
 .ba__rows .lbl{display:none}
 @media (max-width:640px){
@@ -139,7 +142,7 @@ a{color:inherit}
   .ba__rows .arrow{display:none}
   .ba__rows .lbl{display:inline;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}
   .ba__rows .now .lbl{color:var(--mute)}
-  .ba__rows .then .lbl{color:var(--pink)}
+  .ba__rows .then .lbl{color:var(--pink-ink)}
 }
 
 /* timeline */
@@ -153,7 +156,7 @@ a{color:inherit}
 .wk h3{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;margin:4px 0 10px}
 .wk ul{padding-left:18px;display:grid;gap:6px;font-size:16px;color:var(--ink-2)}
 .wk__get{margin-top:14px;padding-top:12px;border-top:1px solid var(--line);font-size:15px}
-.wk__get b{color:var(--pink);font-weight:600}
+.wk__get b{color:var(--pink-ink);font-weight:600}
 .rhythm{margin-top:16px;display:flex;flex-wrap:wrap;gap:10px}
 .rhythm span{font-size:15px;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 16px;color:var(--ink-2)}
 
@@ -223,7 +226,8 @@ a{color:inherit}
 .form{background:#1A1A1E;border:1px solid #2C2C33;border-radius:var(--r);padding:26px;display:grid;gap:16px}
 .form label{display:grid;gap:6px;font-size:14px;font-weight:600;color:rgba(255,255,255,.85)}
 .form input[type=text],.form input[type=email],.form textarea{font:16px/1.4 var(--body);color:#fff;background:#0E0E10;border:1.5px solid #34343C;border-radius:10px;padding:12px 14px;width:100%}
-.form input:focus,.form textarea:focus{border-color:#B48AF0;outline:none}
+.form input:focus,.form textarea:focus{border-color:#B48AF0}
+.form input:focus-visible,.form textarea:focus-visible{outline:3px solid #B48AF0;outline-offset:2px}
 .form textarea{min-height:90px;resize:vertical}
 .form .agree{display:flex;gap:12px;align-items:flex-start;font-weight:500;color:rgba(255,255,255,.8);font-size:15px}
 .agree input{flex:none;width:22px;height:22px;accent-color:#B48AF0;margin-top:1px}
@@ -384,17 +388,26 @@ a{color:inherit}
         <h3><a href="https://www.harmonyislandtv.com" target="_blank" rel="noopener">harmonyislandtv.com</a></h3>
         <p class="stat">The kids' site, recently launched</p>
         <dl>
-          <div><dt>Working</dt><dd>Missions, a passport, a wall of fame and a note for grown-ups. The Musiverse storyline is already written in.</dd></div>
-          <div><dt class="fix">Needs attention</dt><dd>An intro gate stands before any content, and the passport shows sample progress to a first-time visitor.</dd></div>
+          <div><dt>Working</dt><dd>Missions, a passport, a wall of fame and a note for grown-ups. The Musiverse storyline is already written in. The entry lets visitors choose to come in with music or quietly.</dd></div>
+          <div><dt class="fix">Needs attention</dt><dd>The passport shows sample progress to a first-time visitor, so it reads as someone else's account.</dd></div>
         </dl>
       </article>
     </div>
+
+    <article class="ch ch--wide">
+      <h3>Accessibility</h3>
+      <p class="stat">Automated WCAG 2.2 AA scan of both sites on November 17, plus keyboard and video checks</p>
+      <dl class="ch__two">
+        <div><dt>Working</dt><dd>Harmony Island's homepage, entry and Watch page pass the automated scan. The entry asks before any sound plays, both sites respect reduced-motion settings, the cast cards work with a keyboard and the videos have play controls.</dd></div>
+        <div><dt class="fix">Needs attention</dt><dd>None of the videos hosted on either site have captions, which matters for deaf and hard-of-hearing kids and for anyone watching on mute in a hospital room. The footer social icons on musicattv.com have no labels, so screen readers announce nothing. Some text falls below contrast standards, several footer links are too small to tap easily, and neither site has a skip-to-content link.</dd></div>
+      </dl>
+    </article>
 
     <div class="callouts">
       <div class="callout">
         <h3>The transform is the brand</h3>
         <p>The one thing consistent everywhere is the moment each cat turns into a symbol. That belongs at the center of everything Musicat makes.</p>
-        <div class="symrow" aria-label="Treble clef, natural, C clef, sixteenth note, sharp, eighth note, bass clef, flat">
+        <div class="symrow" role="img" aria-label="Treble clef, natural, C clef, sixteenth note, sharp, eighth note, bass clef, flat">
           <span aria-hidden="true">𝄞</span><span aria-hidden="true">♮</span><span aria-hidden="true">𝄡</span><span aria-hidden="true">♬</span><span aria-hidden="true">♯</span><span aria-hidden="true">♪</span><span aria-hidden="true">𝄢</span><span aria-hidden="true">♭</span>
         </div>
       </div>
@@ -481,8 +494,8 @@ a{color:inherit}
       <article class="dv">
         <div class="dv__top"><span class="dv__num" aria-hidden="true"></span><span class="dv__fmt">Live on both sites</span></div>
         <h3>Site fixes</h3>
-        <p>The broken Instagram link, the dead menu items, the passport placeholder, the Instagram bio and the song references that need a license.</p>
-        <p class="why">Closes the gaps a sponsor would notice first.</p>
+        <p>The broken Instagram link, the dead menu items, the passport placeholder, the Instagram bio and the song references that need a license. Plus the accessibility fixes from the scan: labels on icons, contrast, tap sizes and skip links. Captions for the video library are planned in Phase 2.</p>
+        <p class="why">Closes the gaps a sponsor would notice first, and makes Musicat usable for every kid it serves.</p>
       </article>
       <article class="dv">
         <div class="dv__top"><span class="dv__num" aria-hidden="true"></span><span class="dv__fmt">Plan + walkthrough</span></div>
@@ -590,6 +603,7 @@ a{color:inherit}
           <li>Paid programs and booking</li>
           <li>Sponsors and grants</li>
           <li>Short-form content</li>
+          <li>Captions for the video library</li>
           <li>A first live event</li>
           <li>Website support</li>
         </ul>
