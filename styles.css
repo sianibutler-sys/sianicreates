@@ -475,3 +475,30 @@ div.cond:not(.reveal){display:flex;flex-direction:column;gap:18px;margin-top:8px
 .a11y__panel p{color:rgba(255,255,255,.78);font-size:16px;margin-bottom:22px}
 .a11y__panel .btn{white-space:normal;text-align:center}
 @media (max-width:860px){.a11y__panel{position:static}}
+/* work: portrait tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:40px 24px}
+.tile[hidden]{display:none!important}
+.tile__link{display:flex;flex-direction:column;color:inherit;text-decoration:none}
+.tile__img{position:relative;display:block;aspect-ratio:4/5;border-radius:14px;overflow:hidden;background:#E4E1D9;margin-bottom:16px}
+.tile__img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .35s ease,transform .5s ease}
+.tile__brand{opacity:0;transform:scale(1.04)}
+.tile__link:hover .tile__brand,.tile__link:focus-visible .tile__brand,.tile__link.is-flipped .tile__brand{opacity:1;transform:scale(1)}
+.tile__link:focus-visible{outline:none}
+.tile__link:focus-visible .tile__img{outline:3px solid var(--blue);outline-offset:3px}
+.tile__soon{position:absolute;left:12px;top:12px;z-index:2;font:600 12px/1 var(--body);letter-spacing:.04em;background:rgba(255,255,255,.92);color:var(--ink);padding:7px 10px;border-radius:999px}
+.tile__type{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}
+.tile h3{font-family:var(--display);font-weight:700;font-size:22px;line-height:1.2;letter-spacing:-.01em;margin:0 0 6px}
+.tile__lead{font-size:15px;line-height:1.45;color:var(--ink-2);margin:0}
+@media (hover:hover){.tile__link:hover h3{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:4px;text-decoration-color:var(--blue)}}
+.work__more--start{margin-top:16px}
+.tiles__more[hidden]{display:none}
+@media (max-width:1000px){.tiles{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){
+  .tiles{gap:28px 12px}
+  .tile__img{border-radius:12px;margin-bottom:10px}
+  .tile__type{font-size:10px;margin-bottom:4px}
+  .tile h3{font-size:17px;margin-bottom:4px}
+  .tile__lead{font-size:13.5px;line-height:1.4}
+  .tile__soon{font-size:10px;padding:5px 8px;left:8px;top:8px}
+}
+@media (prefers-reduced-motion:reduce){.tile__img img{transition:none}}

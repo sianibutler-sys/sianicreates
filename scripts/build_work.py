@@ -29,6 +29,23 @@ def e(t):
     return html.escape(t, quote=True)
 
 
+def tile(p, pre, lazy=True):
+    load = ' loading="lazy"' if lazy else ""
+    soon = '<span class="tile__soon">Launching soon</span>' if p.get("launching_soon") else ""
+    return f"""      <article class="tile" data-type="{slugify(p['type'])}">
+        <a class="tile__link" href="{pre}work/{p['slug']}/">
+          <span class="tile__img">
+            <img class="tile__cover" src="{pre}assets/img/{p['tile']}" alt="{e(p['name'])} website on a phone"{load} width="800" height="1000">
+            <img class="tile__brand" src="{pre}assets/img/{p['brand']}" alt="" aria-hidden="true" loading="lazy" width="800" height="1000">
+            {soon}
+          </span>
+          <span class="tile__type">{e(p['type'])}</span>
+          <h3>{e(p['name'])}</h3>
+          <p class="tile__lead">{e(p['lead'])}</p>
+        </a>
+      </article>"""
+
+
 def card(p, pre, cls="card", lazy=True):
     feats = "".join(f"<li>{e(f)}</li>" for f in p["features"])
     links = f'<a class="link" href="{pre}work/{p["slug"]}/">Read the case study</a>'
@@ -66,7 +83,7 @@ def main():
     # home: featured, one per site type, ordered System, Front Desk, Hello
     feat = [p for p in projects if p.get("featured")]
     feat.sort(key=lambda p: -TYPES.index(p["type"]))
-    cards = [card(p, "", "card card--wide" if i == 0 else "card") for i, p in enumerate(feat)]
+    cards = [tile(p, "", lazy=i > 1) for i, p in enumerate(feat)]
     home = (ROOT / "index.html").read_text()
     home = swap(home, "featured", "\n\n".join(cards))
     home = re.sub(r'(<a class="btn btn--line work__all"[^>]*>)See all work \(\d+\)', rf"\1See all work ({n})", home)
@@ -74,7 +91,7 @@ def main():
 
     # work page: everything
     page = (ROOT / "work/index.html").read_text()
-    page = swap(page, "all", "\n\n".join(card(p, "../", lazy=i > 1) for i, p in enumerate(projects)))
+    page = swap(page, "all", "\n\n".join(tile(p, "../", lazy=i > 3) for i, p in enumerate(projects)))
     page = re.sub(r'(data-filter="all"[^>]*>All <span>)\d+', rf"\g<1>{n}", page)
     for t in TYPES:
         c = sum(p["type"] == t for p in projects)

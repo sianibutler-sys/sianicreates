@@ -240,19 +240,45 @@
   });
 })();
 
-/* work page: filter by site type */
+/* work page: filter by site type, four at a time */
 (function(){
   var bar=document.querySelector('.filters'); if(!bar) return;
-  var btns=bar.querySelectorAll('button'), cards=document.querySelectorAll('.work--all .card'), status=document.querySelector('.filters__status');
+  var btns=bar.querySelectorAll('button'), tiles=[].slice.call(document.querySelectorAll('.work--all .tile')), status=document.querySelector('.filters__status'), more=document.querySelector('.tiles__more');
   var names={'all':'all site types','the-hello':'The Hello','the-front-desk':'The Front Desk','the-system':'The System'};
+  var STEP=4, limit=STEP, current='all';
+  function render(announce){
+    var match=tiles.filter(function(t){return current==='all'||t.dataset.type===current});
+    tiles.forEach(function(t){t.hidden=true});
+    match.forEach(function(t,i){t.hidden=i>=limit});
+    if(more) more.hidden=match.length<=limit;
+    if(status&&announce) status.textContent='Showing '+Math.min(limit,match.length)+' of '+match.length+(match.length===1?' site':' sites')+(current==='all'?'.':' for '+names[current]+'.');
+  }
   function apply(f,push){
-    if(!names[f]) f='all';
-    var shown=0;
+    if(!names[f]) f='all'; current=f; limit=STEP;
     btns.forEach(function(b){b.setAttribute('aria-pressed',b.dataset.filter===f?'true':'false')});
-    cards.forEach(function(c){var on=f==='all'||c.dataset.type===f;c.hidden=!on;if(on)shown++});
-    if(status) status.textContent=push?('Showing '+shown+(shown===1?' site':' sites')+(f==='all'?'.':' for '+names[f]+'.')):'';
+    render(push);
     if(push){var u=new URL(location.href);if(f==='all')u.searchParams.delete('type');else u.searchParams.set('type',f);history.replaceState(null,'',u)}
   }
   btns.forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.filter,true)})});
+  if(more) more.addEventListener('click',function(){
+    var first=limit; limit+=STEP; render(true);
+    var next=tiles.filter(function(t){return !t.hidden})[first]; if(next){var a=next.querySelector('a'); if(a) a.focus({preventScroll:false})}
+  });
   apply(new URLSearchParams(location.search).get('type')||'all',false);
+})();
+
+/* work tiles: on touch screens, first tap on the picture shows the logo, second tap opens the case study */
+(function(){
+  if(!window.matchMedia||!matchMedia('(hover: none)').matches) return;
+  var links=document.querySelectorAll('.tile__link'); if(!links.length) return;
+  links.forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(!e.target.closest('.tile__img')) return;
+      if(a.classList.contains('is-flipped')) return;
+      e.preventDefault();
+      links.forEach(function(o){o.classList.remove('is-flipped')});
+      a.classList.add('is-flipped');
+    });
+  });
+  document.addEventListener('click',function(e){ if(!e.target.closest('.tile__link')) links.forEach(function(o){o.classList.remove('is-flipped')}) });
 })();

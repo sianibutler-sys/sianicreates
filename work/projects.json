@@ -20,7 +20,74 @@
     "thumb": "work/gvo-thumb.jpg",
     "url": "https://gvosound.com",
     "launching_soon": false,
-    "featured": true
+    "featured": true,
+    "tile": "work/gvo-tile.jpg",
+    "brand": "work/gvo-brand.jpg"
+  },
+  {
+    "slug": "butlers",
+    "name": "Butler's Marina",
+    "type": "The Front Desk",
+    "meta": "Family-run marina · Eastport, Annapolis",
+    "lead": "Lets boaters price and request a slip without picking up the phone.",
+    "features": [
+      "Instant price estimate for overnight dockage",
+      "Tap any slip on the dock map to ask about it",
+      "Walking routes from the dock to Eastport and downtown, with times",
+      "Slip, lift, overnight and leasing requests in one form, sent to the office the moment they come in"
+    ],
+    "bar": "butlersmarinaannapolis.com",
+    "image": "work-butlers.jpg",
+    "image_alt": "Butler's Marina homepage: The best place to dock in Annapolis.",
+    "thumb": "work/butlers-thumb.jpg",
+    "url": "https://butlersmarinaannapolis.com",
+    "launching_soon": false,
+    "featured": true,
+    "tile": "work/butlers-tile.jpg",
+    "brand": "work/butlers-brand.jpg"
+  },
+  {
+    "slug": "dock",
+    "name": "Dock",
+    "type": "The Hello",
+    "meta": "Waterfront social club · Chesapeake Bay",
+    "lead": "Builds a guest list before the first event.",
+    "features": [
+      "Opening animation that follows the real time of day",
+      "Guest list signup with a confirmation email, plus a welcome text for guests who opt in",
+      "Story series with a source behind every fact"
+    ],
+    "bar": "thedock.life",
+    "image": "work-dock.jpg",
+    "image_alt": "Dock homepage: The water brings people together.",
+    "thumb": "work/dock-thumb.jpg",
+    "url": "https://thedock.life",
+    "launching_soon": false,
+    "featured": true,
+    "tile": "work/dock-tile.jpg",
+    "brand": "work/dock-brand.jpg"
+  },
+  {
+    "slug": "invite",
+    "name": "Dock Supper Club invitation",
+    "type": "The Front Desk",
+    "meta": "Private dinner invitations · Baltimore, MD",
+    "lead": "A personal invitation for every guest, opened like a real envelope.",
+    "features": [
+      "A personal link for every guest, greeted by name",
+      "Tap the wax seal to open",
+      "RSVP with plus-ones, allergies and a photo release",
+      "Location revealed only after a yes"
+    ],
+    "bar": "Private invitation",
+    "image": "work-invite.jpg",
+    "image_alt": "The opened Dock Supper Club invitation",
+    "thumb": "work/invite-thumb.jpg",
+    "url": null,
+    "launching_soon": false,
+    "featured": true,
+    "tile": "work/invite-tile.jpg",
+    "brand": "work/invite-brand.jpg"
   },
   {
     "slug": "ajene",
@@ -41,66 +108,9 @@
     "thumb": "work/ajene-thumb.jpg",
     "url": "https://ajenelivingston.com",
     "launching_soon": false,
-    "featured": false
-  },
-  {
-    "slug": "dock",
-    "name": "Dock",
-    "type": "The Hello",
-    "meta": "Waterfront social club · Chesapeake Bay",
-    "lead": "Builds a guest list before the first event.",
-    "features": [
-      "Opening animation that follows the real time of day",
-      "Guest list signup with a confirmation email, plus a welcome text for guests who opt in",
-      "Story series with a source behind every fact"
-    ],
-    "bar": "thedock.life",
-    "image": "work-dock.jpg",
-    "image_alt": "Dock homepage: The water brings people together.",
-    "thumb": "work/dock-thumb.jpg",
-    "url": "https://thedock.life",
-    "launching_soon": false,
-    "featured": true
-  },
-  {
-    "slug": "butlers",
-    "name": "Butler's Marina",
-    "type": "The Front Desk",
-    "meta": "Family-run marina · Eastport, Annapolis",
-    "lead": "Lets boaters price and request a slip without picking up the phone.",
-    "features": [
-      "Instant price estimate for overnight dockage",
-      "Tap any slip on the dock map to ask about it",
-      "Walking routes from the dock to Eastport and downtown, with times",
-      "Slip, lift, overnight and leasing requests in one form, sent to the office the moment they come in"
-    ],
-    "bar": "butlersmarinaannapolis.com",
-    "image": "work-butlers.jpg",
-    "image_alt": "Butler's Marina homepage: The best place to dock in Annapolis.",
-    "thumb": "work/butlers-thumb.jpg",
-    "url": "https://butlersmarinaannapolis.com",
-    "launching_soon": false,
-    "featured": true
-  },
-  {
-    "slug": "invite",
-    "name": "Dock Supper Club invitation",
-    "type": "The Front Desk",
-    "meta": "Private dinner invitations · Baltimore, MD",
-    "lead": "A personal invitation for every guest, opened like a real envelope.",
-    "features": [
-      "A personal link for every guest, greeted by name",
-      "Tap the wax seal to open",
-      "RSVP with plus-ones, allergies and a photo release",
-      "Location revealed only after a yes"
-    ],
-    "bar": "Private invitation",
-    "image": "work-invite.jpg",
-    "image_alt": "The opened Dock Supper Club invitation",
-    "thumb": "work/invite-thumb.jpg",
-    "url": null,
-    "launching_soon": false,
-    "featured": false
+    "featured": false,
+    "tile": "work/ajene-tile.jpg",
+    "brand": "work/ajene-brand.jpg"
   },
   {
     "slug": "boomin",
@@ -120,6 +130,8 @@
     "thumb": "work/boomin-thumb.jpg",
     "url": null,
     "launching_soon": true,
-    "featured": false
+    "featured": false,
+    "tile": "work/boomin-tile.jpg",
+    "brand": "work/boomin-brand.jpg"
   }
 ]
