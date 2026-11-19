@@ -89,7 +89,8 @@ a{color:inherit}
 @media (max-width:760px){.callouts{grid-template-columns:1fr}}
 .callout{border-radius:var(--r);padding:24px;background:var(--plum);color:#fff}
 .callout--sun{background:var(--peach);color:var(--ink)}
-.added{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:#fff;color:var(--plum-ink);border-radius:999px;padding:4px 10px;margin-bottom:10px}
+.added{display:inline-flex;align-items:center;gap:6px;vertical-align:middle;margin-left:6px;font:600 11px/1 var(--body);letter-spacing:.04em;color:rgba(255,255,255,.85);white-space:nowrap}
+.added::before{content:"";width:6px;height:6px;border-radius:50%;background:#FFB37A}
 .callout h3{font-family:var(--display);font-weight:700;font-size:20px;margin-bottom:8px}
 .callout p{font-size:16px;opacity:.92}
 .symrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
@@ -408,8 +409,7 @@ a{color:inherit}
 
     <div class="callouts">
       <div class="callout">
-        <p class="added">Added November 18</p>
-        <h3>The transform and the eight sounds are the brand</h3>
+        <h3>The transform and the eight sounds are the brand <span class="added">Added Nov 18</span></h3>
         <p>The eight genres give Musicat its range. Every kid finds a cat that sounds like them, and every artist, trend or tour has a cat to connect with. The transform is the signature, the moment each cat turns into its symbol. Together they belong at the center of everything Musicat makes.</p>
         <div class="symrow" role="img" aria-label="Treble clef, natural, C clef, sixteenth note, sharp, eighth note, bass clef, flat">
           <span aria-hidden="true">𝄞</span><span aria-hidden="true">♮</span><span aria-hidden="true">𝄡</span><span aria-hidden="true">♬</span><span aria-hidden="true">♯</span><span aria-hidden="true">♪</span><span aria-hidden="true">𝄢</span><span aria-hidden="true">♭</span>
