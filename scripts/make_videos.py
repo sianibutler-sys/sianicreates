@@ -17,7 +17,7 @@ W = mt.W
 FPS = 24
 OUT = (480, 600)
 # how far down the page each loop scrolls, in full-screenshot pixels
-SCROLL = {"butlers": 5600, "dock": 3700, "boomin": 3500, "invite": 4300}
+SCROLL = {"gvo": 4200, "butlers": 5600, "dock": 3700, "boomin": 3500, "invite": 4300}
 # optional first screen that fades into the scrolling page (the sealed envelope)
 INTRO = {"invite": "invite-closed.jpg"}
 

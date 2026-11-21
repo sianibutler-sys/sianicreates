@@ -22,7 +22,8 @@
     "launching_soon": false,
     "featured": true,
     "tile": "work/gvo-tile.jpg",
-    "brand": "work/gvo-brand.jpg"
+    "brand": "work/gvo-brand.jpg",
+    "video": "work/gvo-loop.mp4"
   },
   {
     "slug": "butlers",

@@ -136,6 +136,7 @@ BG = {
     "butlers": lambda: dark(cover(img("butlers-desk.jpg").crop((560, 60, 900, 300))).filter(ImageFilter.GaussianBlur(3)), .2, (20, 30, 45)),
     "dock": lambda: cover(img("dock-desk.jpg").crop((0, 330, 420, 860))),
 }
+BG["gvo"] = lambda: dark(cover(img("gvo-desk.jpg").crop((540, 150, 740, 450))).filter(ImageFilter.GaussianBlur(10)), .25)
 BG["invite"] = lambda: grad((238, 232, 221), (214, 203, 184))
 BG["boomin"] = lambda: dark(cover(img("boomin-desk.jpg").crop((1020, 120, 1440, 560))).filter(ImageFilter.GaussianBlur(14)), .35, (40, 20, 10))
 FRAME = {"dock": (16, 30, 52), "invite": (22, 34, 58)}
@@ -143,8 +144,7 @@ FRAME = {"dock": (16, 30, 52), "invite": (22, 34, 58)}
 # ---------- recipes ----------
 
 def gvo():
-    room = cover(img("gvo-desk.jpg").crop((540, 150, 740, 450))).filter(ImageFilter.GaussianBlur(10))
-    tile = phone(dark(room, .25), "gvo")
+    tile = phone(BG["gvo"](), "gvo")
     bg = grad((22, 18, 36), (8, 8, 12))
     brand = centered(bg, logo_png("gvo-logo.png", 460, (243, 240, 234)))
     return tile, brand
