@@ -102,6 +102,7 @@ def main():
     page = re.sub(r'(<span class="work__count">)[^<]*', rf"\g<1>{words.capitalize()} sites so far.", page)
     (ROOT / "work/index.html").write_text(page)
     print(f"Built {len(feat)} featured and {n} total.")
+    import sys; sys.path.insert(0, str(Path(__file__).parent)); import stamp; stamp.main()
 
 
 if __name__ == "__main__":

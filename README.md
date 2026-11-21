@@ -56,3 +56,7 @@ To add or change a project: edit `work/projects.json`, add its desktop screensho
 
 - `python3 scripts/make_tiles.py [slug]` builds `<slug>-tile.jpg` (the site on a phone) and `<slug>-brand.jpg` (the logo card) from the phone screenshot, logo and the recipe in the script.
 - `python3 scripts/make_videos.py [slug]` builds `<slug>-loop.mp4`, the short muted loop that plays on phones. It needs `<slug>-full.jpg`, a full-page phone screenshot at 780px wide, and a scroll depth in `SCROLL`. Add `"video"` to the project in projects.json, then run `build_work.py`.
+
+## Cache-busting
+
+`python3 scripts/stamp.py` adds `?v=<hash>` to every local CSS, JS, image, video and icon link in every page. The hash comes from the file itself, so it only changes when that file changes. `build_work.py` runs it automatically; run it yourself after editing a page, the CSS, the JS or any image. Outside links (Google Fonts, embeds) are left alone.
