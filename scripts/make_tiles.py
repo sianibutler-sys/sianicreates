@@ -43,14 +43,14 @@ def solid(c):
     return Image.new("RGB", (TW, TH), c)
 
 
-def phone(bg, slug, top=210, width=440, frame=(14, 14, 18)):
+def phone(bg, slug, top=210, width=440, frame=(14, 14, 18), raw=None, bar_color=None):
     """Lay the phone screenshot into a phone frame rising from the bottom of the tile."""
-    raw = img(f"{slug}-mob.jpg")
+    raw = raw if raw is not None else img(f"{slug}-mob.jpg")
     sw = width
     shot = raw.resize((sw, round(raw.height * sw / raw.width)), Image.LANCZOS)
     # status bar strip above the page, so the island never covers the site's own header
     bar = 46
-    top_color = raw.getpixel((raw.width // 2, 2))
+    top_color = bar_color or raw.getpixel((raw.width // 2, 2))
     screen = Image.new("RGB", (sw, shot.height + bar), top_color)
     screen.paste(shot, (0, bar))
     shot = screen
@@ -131,6 +131,15 @@ def centered(bg, logo, dy=0):
 WAVE = '''<g fill="none" stroke="{c}" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"><path d="M 15 105 C 30 114, 55 114, 75 98 C 100 78, 115 35, 150 20 C 170 12, 200 14, 222 38"/><path d="M 196 42 C 176 50, 168 76, 184 94 C 198 108, 225 112, 250 110"/></g><circle cx="254" cy="38" r="17" fill="{d}"/>'''
 
 
+# backgrounds and frame colors shared with make_videos.py
+BG = {
+    "butlers": lambda: dark(cover(img("butlers-desk.jpg").crop((560, 60, 900, 300))).filter(ImageFilter.GaussianBlur(3)), .2, (20, 30, 45)),
+    "dock": lambda: cover(img("dock-desk.jpg").crop((0, 330, 420, 860))),
+}
+BG["invite"] = lambda: grad((238, 232, 221), (214, 203, 184))
+BG["boomin"] = lambda: dark(cover(img("boomin-desk.jpg").crop((1020, 120, 1440, 560))).filter(ImageFilter.GaussianBlur(14)), .35, (40, 20, 10))
+FRAME = {"dock": (16, 30, 52), "invite": (22, 34, 58)}
+
 # ---------- recipes ----------
 
 def gvo():
@@ -154,16 +163,14 @@ def ajene():
 
 
 def dock():
-    sea = cover(img("dock-desk.jpg").crop((0, 330, 420, 860)))
-    tile = phone(sea, "dock", frame=(16, 30, 52))
+    tile = phone(BG["dock"](), "dock", frame=FRAME["dock"])
     svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 130">' + WAVE.format(c="#14253F", d="#E8642C") + '</svg>'
     brand = centered(grad((222, 232, 240), (246, 241, 232)), logo_svg(svg, 500))
     return tile, brand
 
 
 def butlers():
-    harbor = cover(img("butlers-desk.jpg").crop((560, 60, 900, 300))).filter(ImageFilter.GaussianBlur(3))
-    tile = phone(dark(harbor, .2, (20, 30, 45)), "butlers")
+    tile = phone(BG["butlers"](), "butlers")
     svg = (W / "butlers-logo.svg").read_text()
     bg = dark(cover(img("butlers-mob.jpg").crop((0, 100, 600, 560))).filter(ImageFilter.GaussianBlur(60)), .45, (13, 26, 43))
     brand = centered(bg, logo_svg(svg, 560))
@@ -171,7 +178,7 @@ def butlers():
 
 
 def invite():
-    tile = phone(grad((238, 232, 221), (214, 203, 184)), "invite", frame=(22, 34, 58))
+    tile = phone(BG["invite"](), "invite", frame=FRAME["invite"])
     svg = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300"><circle cx="150" cy="150" r="146" fill="#14253F"/>'
            '<g transform="translate(46,104) scale(.74)">' + WAVE.format(c="#F4EFE6", d="#E8642C") + '</g></svg>')
     brand = centered(grad((238, 232, 221), (222, 213, 197)), logo_svg(svg, 340))
@@ -180,8 +187,7 @@ def invite():
 
 def boomin():
     m = img("boomin-mob.jpg")
-    burst = cover(img("boomin-desk.jpg").crop((1020, 120, 1440, 560))).filter(ImageFilter.GaussianBlur(14))
-    tile = phone(dark(burst, .35, (40, 20, 10)), "boomin")
+    tile = phone(BG["boomin"](), "boomin")
     brand = centered(solid((38, 29, 24)), logo_png("boomin-logo.png", 600))
     return tile, brand
 

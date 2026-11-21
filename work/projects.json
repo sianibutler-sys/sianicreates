@@ -44,7 +44,8 @@
     "launching_soon": false,
     "featured": true,
     "tile": "work/butlers-tile.jpg",
-    "brand": "work/butlers-brand.jpg"
+    "brand": "work/butlers-brand.jpg",
+    "video": "work/butlers-loop.mp4"
   },
   {
     "slug": "dock",
@@ -65,7 +66,8 @@
     "launching_soon": false,
     "featured": true,
     "tile": "work/dock-tile.jpg",
-    "brand": "work/dock-brand.jpg"
+    "brand": "work/dock-brand.jpg",
+    "video": "work/dock-loop.mp4"
   },
   {
     "slug": "invite",
@@ -87,7 +89,8 @@
     "launching_soon": false,
     "featured": true,
     "tile": "work/invite-tile.jpg",
-    "brand": "work/invite-brand.jpg"
+    "brand": "work/invite-brand.jpg",
+    "video": "work/invite-loop.mp4"
   },
   {
     "slug": "ajene",
@@ -132,6 +135,7 @@
     "launching_soon": true,
     "featured": false,
     "tile": "work/boomin-tile.jpg",
-    "brand": "work/boomin-brand.jpg"
+    "brand": "work/boomin-brand.jpg",
+    "video": "work/boomin-loop.mp4"
   }
 ]

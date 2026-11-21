@@ -51,3 +51,8 @@ The function sends `typecast: true`, so select options are created as answers co
 All projects live in `work/projects.json`. The home page shows the ones marked `"featured": true` (one per site type), and `/work/` shows all of them with filters by site type.
 
 To add or change a project: edit `work/projects.json`, add its desktop screenshot to `assets/img/` and a 360x360 phone thumbnail to `assets/img/work/`, then run `python3 scripts/build_work.py`. The script rewrites the cards in `index.html` and `work/index.html` and updates the counts. Each project also needs its own case study page at `work/<slug>/index.html`.
+
+### Tile pictures and preview videos
+
+- `python3 scripts/make_tiles.py [slug]` builds `<slug>-tile.jpg` (the site on a phone) and `<slug>-brand.jpg` (the logo card) from the phone screenshot, logo and the recipe in the script.
+- `python3 scripts/make_videos.py [slug]` builds `<slug>-loop.mp4`, the short muted loop that plays on phones. It needs `<slug>-full.jpg`, a full-page phone screenshot at 780px wide, and a scroll depth in `SCROLL`. Add `"video"` to the project in projects.json, then run `build_work.py`.

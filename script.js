@@ -274,6 +274,7 @@
   links.forEach(function(a){
     a.addEventListener('click',function(e){
       if(!e.target.closest('.tile__img')) return;
+      if(a.closest('.tile.has-video')) return;
       if(a.classList.contains('is-flipped')) return;
       e.preventDefault();
       links.forEach(function(o){o.classList.remove('is-flipped')});
@@ -281,4 +282,20 @@
     });
   });
   document.addEventListener('click',function(e){ if(!e.target.closest('.tile__link')) links.forEach(function(o){o.classList.remove('is-flipped')}) });
+})();
+
+/* work tiles: on phones, play the preview loop while the tile is on screen */
+(function(){
+  if(!window.matchMedia||!matchMedia('(hover: none)').matches) return;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if(navigator.connection&&navigator.connection.saveData) return;
+  var vids=document.querySelectorAll('.tile__video'); if(!vids.length||!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      var v=en.target;
+      if(en.isIntersecting){ if(!v.src) v.src=v.dataset.src; var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+      else v.pause();
+    });
+  },{threshold:0.6});
+  vids.forEach(function(v){io.observe(v)});
 })();

@@ -32,12 +32,14 @@ def e(t):
 def tile(p, pre, lazy=True):
     load = ' loading="lazy"' if lazy else ""
     soon = '<span class="tile__soon">Launching soon</span>' if p.get("launching_soon") else ""
-    return f"""      <article class="tile" data-type="{slugify(p['type'])}">
+    video = (f'<video class="tile__video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1" '
+             f'poster="{pre}assets/img/{p["tile"]}" data-src="{pre}assets/img/{p["video"]}"></video>\n            ') if p.get("video") else ""
+    return f"""      <article class="tile{' has-video' if p.get('video') else ''}" data-type="{slugify(p['type'])}">
         <a class="tile__link" href="{pre}work/{p['slug']}/">
           <span class="tile__img">
             <img class="tile__cover" src="{pre}assets/img/{p['tile']}" alt="{e(p['name'])} website on a phone"{load} width="800" height="1000">
             <img class="tile__brand" src="{pre}assets/img/{p['brand']}" alt="" aria-hidden="true" loading="lazy" width="800" height="1000">
-            {soon}
+            {video}{soon}
           </span>
           <span class="tile__type">{e(p['type'])}</span>
           <h3>{e(p['name'])}</h3>
